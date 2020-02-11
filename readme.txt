@@ -1,0 +1,1 @@
+This is an application that helps users find nearby gyms.
