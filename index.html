@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<img src="images/search.jpg" alt="magnifying glass.jpg" width="100px" height="100px" style="float:left";>
+<img src="images/search.jpg" alt="magnifying glass.jpg" id="search" width="100px" height="100px" style="float:left";>
 <img src="images/gear.jpg" alt="gear icon.jpg" width="90px" height="90px" style="float:right";>
 <img src="images/find-gym.jpg" alt="find gym button" id="findgym" width="350px" height="200px" style="position: absolute; left:40%; top:35%;">
 
@@ -18,10 +18,17 @@
 <script>
 
     document.getElementById("findgym").onclick = findGym;
+    document.getElementById("search").onclick = searchGym;
 
     function findGym() {
         location.href = "results.html";
     }
+
+    function searchGym() {
+        let address = prompt("Enter Location", "Current Location");
+    }
+
+
     
 </script>
 
