@@ -1,15 +1,32 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Gym Finder</title>
-        <h1>This is a webite that helps you find gyms</h1>
-        <h3>Hello from Amir!</h3>
-        <h2>Hello from Ricky Sun</h2>
-<h2>Hi from Aria Tofighi 8)</h2> 
-    </head>
-    <body>
-        <p>If you hate going to busy gyms, this is the application for you!</p>
-    </body> 
-</html>
 
+<head>
+    <title>Gym Finder</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+<img src="images/search.jpg" alt="magnifying glass.jpg" width="100px" height="100px" style="float:left";>
+<img src="images/gear.jpg" alt="gear icon.jpg" width="90px" height="90px" style="float:right";>
+<img src="images/find-gym.jpg" alt="find gym button" id="findgym" width="350px" height="200px" style="position: absolute; left:40%; top:35%;">
+
+
+
+<script>
+
+    document.getElementById("findgym").onclick = findGym;
+
+    function findGym() {
+        location.href = "results.html";
+    }
+    
+</script>
+
+
+</script>
+</body>
+
+</html>
