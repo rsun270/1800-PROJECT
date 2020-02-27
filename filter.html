@@ -1,12 +1,59 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Gym Finder</title> 
-</head>
-<body>
-<h1>Filter Gyms</h1>
-<p>Female only section</p>
-<p>Distance</p>
-<p>Drop-in</p>
 
+<head>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .buttons {
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 20px;
+            margin: 20px;
+            vertical-align: center;
+        }
+
+        .centeredButtons {
+            text-align: center;
+        }
+
+        #back {
+            position: absolute;
+        }
+    </style>
+    <title>Gym finder</title>
+</head>
+
+<body>
+    <a href="index.html">
+        <img src="images/back.jpg" alt="Return to previous page" id="back" width="100px" height="100px"
+            style="float:left"><br>
+    </a>
+    <h1 if="filterList">Filters:</h1>
+    <div class="centeredButtons">
+        <button class="buttons" id="filter1" onclick="filterSelect(1)">Rating</button>
+        <button class="buttons" id="filter2" onclick="filterSelect(2)">Distance</button>
+        <button class="buttons" id="filter3" onclick="filterSelect(3)">Price</button>
+    </div>
+    <h1>Amenities:</h1>
+    <div class="centeredButtons">
+        <button class="buttons" id="filter4" onclick="filterSelect(4)">Pool</button>
+        <button class="buttons" id="filter5" onclick="filterSelect(5)">Female-Only</button>
+        <button class="buttons" id="filter6" onclick="filterSelect(6)">Free parking</button><br>
+        <button class="buttons" id="filter7" onclick="filterSelect(7)">24/7</button>
+        <button class="buttons" id="filter8" onclick="filterSelect(8)">Trainers</button>
+        <button class="buttons" id="filter9" onclick="filterSelect(9)">Multiple locations</button><br>
+    </div><br>
+    <div class="centeredButtons">
+        <button class="buttons">Search now!</button>
+    </div>
+    <script>
+        function filterSelect(i) {
+            document.getElementById("filter" + i).style.fontWeight = "Bold";
+        }
+    </script>
 </body>
+
 </html>
