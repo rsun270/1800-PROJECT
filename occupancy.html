@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Report Occupancy</title>
+    <style>
+        .occupancy {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #718EA4;
+            width: 300px;
+            height: 600px;
+            text-align: left;
+        }
+
+        p {
+            margin-bottom: 20px;
+            margin-left: 20px;
+            text-align: left;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+            color: white;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            margin-left: 20px;
+        }
+
+        #menu {
+            position: absolute;
+            width: 100%;
+            top: 0px;
+            left: 0px;
+            background-color: #29506D;
+        }
+
+        hr {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        body {
+            background-color: lightgrey;
+        }
+        .occupancyRadio {
+            margin-right: 30px;
+            margin-top: 50px;
+            float: right;
+        }
+
+        #submitButton {
+            margin-left: 50%;
+            transform: translate(-50%);
+            width: 100px;
+            height: 30px;
+            border: none;
+        }
+
+        #back {
+            margin-top: 80px;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu">
+        <h1>GymFinder</h1>
+    </div>
+    <a href="index.html">
+            <img src="images/back.jpg" alt="Return to previous page" id="back">
+        </a>
+    <div class="occupancy">
+        <p>Occupancy</p>
+        <hr>
+        
+        <div id="occupancyChoices">
+            <p>Low</p>
+            <input class="occupancyRadio" type="radio" name="occupancyRadio">
+            <br>
+            <p>Medium</p>
+            <input class="occupancyRadio" type="radio" name="occupancyRadio">
+            <br>
+            <P>High</P>
+            <input class="occupancyRadio" type="radio" name="occupancyRadio">
+        </div>
+        <div id="submitContainer">
+            <input id="submitButton" type="button" value="Submit">
+            
+        </div>
+    </div>
+</body>
+
+</html>
