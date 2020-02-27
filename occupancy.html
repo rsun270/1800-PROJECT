@@ -5,34 +5,40 @@
     <title>Report Occupancy</title>
     <style>
         .occupancy {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             background-color: #718EA4;
             width: 300px;
             height: 600px;
+            margin: auto;
+            padding: 10px;
             text-align: left;
+        }
+
+        #belowMenuBar {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            margin-top: 150px;
         }
 
         p {
             margin-bottom: 20px;
             margin-left: 20px;
-            text-align: left;
+            text-align: left; 
+            display: inline-block;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 40px;
             color: white;
-            display: inline-block;
+
         }
 
-        h1 {
+        #menuName {
             font-family: Arial, Helvetica, sans-serif;
             color: white;
             margin-left: 20px;
         }
 
-        #menu {
-            position: absolute;
+        #menuBar {
+            position: fixed;
             width: 100%;
             top: 0px;
             left: 0px;
@@ -47,10 +53,11 @@
         body {
             background-color: lightgrey;
         }
+
         .occupancyRadio {
             margin-right: 30px;
             margin-top: 50px;
-            float: right;
+            float: right; 
         }
 
         #submitButton {
@@ -62,7 +69,7 @@
         }
 
         #back {
-            margin-top: 80px;
+            position: fixed;  
             width: 100px;
             height: 100px;
         }
@@ -70,31 +77,35 @@
 </head>
 
 <body>
-    <div id="menu">
-        <h1>GymFinder</h1>
-    </div>
-    <a href="index.html">
-            <img src="images/back.jpg" alt="Return to previous page" id="back">
+        <div id="menuBar">
+            <h1 id="menuName">GymFinder</h1>
+        </div>
+        <a href="index.html">
+            <img id="back" src="images/back.jpg" alt="Return to previous page">
         </a>
-    <div class="occupancy">
-        <p>Occupancy</p>
-        <hr>
-        
-        <div id="occupancyChoices">
-            <p>Low</p>
-            <input class="occupancyRadio" type="radio" name="occupancyRadio">
-            <br>
-            <p>Medium</p>
-            <input class="occupancyRadio" type="radio" name="occupancyRadio">
-            <br>
-            <P>High</P>
-            <input class="occupancyRadio" type="radio" name="occupancyRadio">
-        </div>
-        <div id="submitContainer">
-            <input id="submitButton" type="button" value="Submit">
+        <div id="belowMenuBar">
             
+            <div class="occupancy">
+                <p>Occupancy</p>
+                <hr>
+
+                <div id="occupancyChoices">
+                    <p>Low</p>
+                    <input class="occupancyRadio" type="radio" name="occupancyRadio">
+                    <br>
+                    <p>Medium</p>
+                    <input class="occupancyRadio" type="radio" name="occupancyRadio">
+                    <br>
+                    <P>High</P>
+                    <input class="occupancyRadio" type="radio" name="occupancyRadio">
+                </div>
+                <div id="submitContainer">
+                    <input id="submitButton" type="button" value="Submit">
+
+                </div>
+            </div>
         </div>
-    </div>
+
 </body>
 
 </html>
