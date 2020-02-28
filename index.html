@@ -1,39 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Gym Finder</title>
-    <style>
+    <meta charset="utf-8">
+    <title>GymFinder</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
 
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar-brand {
+            color: white;
+        }
+
+        input.findgym {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .shortcut {
+            text-align: justify;
+            -ms-text-justify: distribute-all-lines;
+            text-justify: distribute-all-lines;
+            display: inline-block;
+            *display: inline;
+        }
+
+        .stretch {
+            width: 100%;
+            display: inline-block;
+            font-size: 0;
+            line-height: 0
+        }
     </style>
+
 </head>
 
 <body>
-<img src="images/search.jpg" alt="magnifying glass.jpg" id="search" width="100px" height="100px" style="float:left";>
-<img src="images/gear.jpg" alt="gear icon.jpg" width="90px" height="90px" style="float:right";>
-<img src="images/find-gym.jpg" alt="find gym button" id="findgym" width="350px" height="200px" style="position: absolute; left:40%; top:35%;">
 
 
-
-<script>
-
-    document.getElementById("findgym").onclick = findGym;
-    document.getElementById("search").onclick = searchGym;
-
-    function findGym() {
-        location.href = "results.html";
-    }
-
-    function searchGym() {
-        let address = prompt("Enter Location", "Current Location");
-    }
+    <!------------------->
+    <!--  HTML Section -->
+    <!------------------->
 
 
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-dark bg-dark py-3">
+        <a class="navbar-brand" href="index.html">
+            <h1>GymFinder</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <div class="topnav">
+                            <input type="text" placeholder="Current Location...">
+                        </div><span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Edit Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--FIND A GYM BUTTON-->
+    <a href="results.html">
+        <input class="findgym" type="image" src="images/find-a-gym.png">
+    </a>
     
-</script>
 
+    <!--SHORTCUT BAR/FOOTER-->
+    <div class="footer fixed-bottom center"
+        style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
+        <a href="index.html" class="shortcut py-3 px-3">
+            <div>
+                Home
+            </div>
+        </a>
+        <a href="results.html" class="shortcut py-3 px-3">
+            <div>
+                Find a Gym
+            </div>
+        </a>
+        <a href="#" class="shortcut py-3 px-3">
+            <div>
+                Points
+            </div>
+        </a>
+        <a href="#" class="shortcut py-3 px-3">
+            <div>
+                Fitness Profile
+            </div>
+        </a>
+        
 
-</script>
+    </div>
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, other API's    -->
+    <!----------------------------------------------->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+    <script src="/__/firebase/7.9.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.9.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.9.1/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <!----------------------------------------------->
+    <!-- JS files: Your own JavaScripts go here    -->
+    <!----------------------------------------------->
+    <script src="scripts/script.js">
+    </script>
+
 </body>
 
 </html>
