@@ -60,6 +60,10 @@
             border: 1px solid;
         }
 
+        .header-margin {
+            height: 55px;
+        }
+
         .footer-margin {
             height: 55px;
         }
@@ -67,6 +71,14 @@
         #filters {
             height: 30px;
             width: 30px;
+        }
+
+        #buttons {
+            
+        }
+
+        .nav-link {
+            background-color: white;
         }
     </style>
 
@@ -106,25 +118,25 @@
                 </li>
             </ul>
         </div>
+        <!--FILTERS-->
+        <div id="buttons">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="filter.html">
+                        <div>
+                            <input id="filters" type="image" src="images/filter.jpg">
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" href="#">Distance</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" href="#">Price</div>
+                </li>
+            </ul>
+        </div>
     </nav>
-
-    <!--FILTERS-->
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" href="filter.html">
-              <div>
-                  <input id="filters" type="image" src="images/filter.jpg">
-              </div>
-          </a>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link" href="#">Distance</div>
-        </li>
-        <li class="nav-item">
-          <div class="nav-link" href="#">Price</div>
-        </li>
-        
-      </ul>
 
     <!--RESULTS LIST-->
     <div class="container">
