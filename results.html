@@ -68,6 +68,12 @@
             height: 30px;
             width: 30px;
         }
+
+        #occupancyReportButton {
+            background-color: darkgray;
+            border: 1px solid black;
+            margin-bottom: 0.75em;
+        }
     </style>
 
 </head>
@@ -111,20 +117,20 @@
     <!--FILTERS-->
     <ul class="nav nav-pills">
         <li class="nav-item">
-          <a class="nav-link" href="filter.html">
-              <div>
-                  <input id="filters" type="image" src="images/filter.jpg">
-              </div>
-          </a>
+            <a class="nav-link" href="filter.html">
+                <div>
+                    <input id="filters" type="image" src="images/filter.jpg">
+                </div>
+            </a>
         </li>
         <li class="nav-item">
-          <div class="nav-link" href="#">Distance</div>
+            <div class="nav-link" href="#">Distance</div>
         </li>
         <li class="nav-item">
-          <div class="nav-link" href="#">Price</div>
+            <div class="nav-link" href="#">Price</div>
         </li>
-        
-      </ul>
+
+    </ul>
 
     <!--RESULTS LIST-->
     <div class="container">
@@ -139,11 +145,14 @@
                 <div>
                     <h4>Occupancy:</h4>
                 </div>
-                <a href="occupancy.html">
-                    <div class="py-3">
-                        <h3 style="color:black">LOW</h3>
-                    </div>
-                </a>
+                <div class="py-3">
+                    <h3 style="color:black">LOW</h3>
+                </div>
+                <!--REPORT OCCUPANCY BUTTON-->
+                <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#reportOccupancyModal">
+                    Report Occupancy
+                </button>
             </div>
         </div>
         <div class="row py-2">
@@ -157,11 +166,16 @@
                 <div>
                     <h4>Occupancy:</h4>
                 </div>
-                <a href="occupancy.html">
+                <!-- <a href="occupancy.html"> -->
                     <div class="py-3">
                         <h3 style="color:black">LOW</h3>
                     </div>
-                </a>
+                    <!--REPORT OCCUPANCY BUTTON-->
+                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#reportOccupancyModal">
+                        Report Occupancy
+                    </button>
+                <!-- </a> -->
             </div>
         </div>
         <div class="row py-2">
@@ -175,11 +189,16 @@
                 <div>
                     <h4>Occupancy:</h4>
                 </div>
-                <a href="occupancy.html">
+                <!-- <a href="occupancy.html"> -->
                     <div class="py-3">
                         <h3 style="color:black">LOW</h3>
                     </div>
-                </a>
+                    <!--REPORT OCCUPANCY BUTTON-->
+                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#reportOccupancyModal">
+                        Report Occupancy
+                    </button>
+                <!-- </a> -->
             </div>
         </div>
         <div class="row py-2">
@@ -193,11 +212,16 @@
                 <div>
                     <h4>Occupancy:</h4>
                 </div>
-                <a href="occupancy.html">
+                <!-- <a href="occupancy.html"> -->
                     <div class="py-3">
                         <h3 style="color:black">MED</h3>
                     </div>
-                </a>
+                    <!--REPORT OCCUPANCY BUTTON-->
+                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#reportOccupancyModal">
+                        Report Occupancy
+                    </button>
+                <!-- </a> -->
             </div>
         </div>
         <div class="row py-2">
@@ -211,11 +235,16 @@
                 <div>
                     <h4>Occupancy:</h4>
                 </div>
-                <a href="occupancy.html">
+                <!-- <a href="occupancy.html"> -->
                     <div class="py-3">
                         <h3 style="color:black">HIGH</h3>
                     </div>
-                </a>
+                    <!--REPORT OCCUPANCY BUTTON-->
+                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#reportOccupancyModal">
+                        Report Occupancy
+                    </button>
+                <!-- </a> -->
             </div>
         </div>
         <div class="row py-2">
@@ -229,11 +258,77 @@
                 <div>
                     <h4>Occupancy:</h4>
                 </div>
-                <a href="occupancy.html">
+                <!-- <a href="occupancy.html"> -->
                     <div class="py-3">
                         <h3 style="color:black">HIGH</h3>
                     </div>
-                </a>
+                    <!--REPORT OCCUPANCY BUTTON-->
+                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#reportOccupancyModal">
+                        Report Occupancy
+                    </button>
+                <!-- </a> -->
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL (REPORT OCCUPANCY POP UP WINDOW)-->
+    <div class="modal" id="reportOccupancyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Report Occupancy</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optradio">Low
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optradio">Medium
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optradio">High
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+                        data-target="#thankYouOccupancyModal">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL (THANK YOU POP UP WINDOW AFTER SUBMITTING OCCUPANCY)-->
+    <div class="modal" id="thankYouOccupancyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Thank you for submitting.</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
             </div>
         </div>
     </div>
