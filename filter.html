@@ -22,6 +22,7 @@
         #back {
             position: absolute;
         }
+
         a {
             text-decoration: none;
             color: white;
@@ -45,7 +46,6 @@
             display: inline-block;
             *display: inline;
         }
-
     </style>
     <meta charset="utf-8">
     <title>Gym finder</title>
@@ -53,8 +53,9 @@
     <meta name="author" content="BCIT">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 </head>
@@ -88,85 +89,111 @@
         </div>
     </nav>
 
-     <!--SHORTCUT BAR/FOOTER-->
-     <div class="footer fixed-bottom center"
-     style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
-     <a href="index.html" class="shortcut py-3 px-3">
-         <div>
-             Home
-         </div>
-     </a>
-     <a href="results.html" class="shortcut py-3 px-3">
-         <div>
-             Find a Gym
-         </div>
-     </a>
-     <a href="#" class="shortcut py-3 px-3">
-         <div>
-             Points
-         </div>
-     </a>
-     <a href="#" class="shortcut py-3 px-3">
-         <div>
-             Fitness Profile
-         </div>
-     </a>
-     
+    <!--SHORTCUT BAR/FOOTER-->
+    <div class="footer fixed-bottom center"
+        style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
+        <a href="index.html" class="shortcut py-3 px-3">
+            <div>
+                Home
+            </div>
+        </a>
+        <a href="results.html" class="shortcut py-3 px-3">
+            <div>
+                Find a Gym
+            </div>
+        </a>
+        <a href="#" class="shortcut py-3 px-3">
+            <div>
+                Points
+            </div>
+        </a>
+        <a href="#" class="shortcut py-3 px-3">
+            <div>
+                Fitness Profile
+            </div>
+        </a>
 
- </div>
+
+    </div>
 
     <a href="results.html">
         <img src="images/back.jpg" alt="Return to previous page" id="back" width="100px" height="100px"
-            style="float:left"><br>
+            style="float:left"><br><br>
     </a>
     <h1 if="filterList">Filters:</h1>
     <div class="centeredButtons">
-        <button class="buttons" id="filter1" onclick="filterSelect(1)">Rating</button>
-        <button class="buttons" id="filter2" onclick="filterSelect(2)">Distance</button>
-        <button class="buttons" id="filter3" onclick="filterSelect(3)">Price</button>
-    </div>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" name='selection'> Rating
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off" name='selection'> Price
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" autocomplete="off" name='selection'> Distance
+            </label>
+        </div>
+    </div><br><br>
     <h1>Amenities:</h1>
     <div class="centeredButtons">
-        <button class="buttons" id="filter4" onclick="filterSelect(4)">Pool</button>
-        <button class="buttons" id="filter5" onclick="filterSelect(5)">Female-Only</button>
-        <button class="buttons" id="filter6" onclick="filterSelect(6)">Free parking</button><br>
-        <button class="buttons" id="filter7" onclick="filterSelect(7)">24/7</button>
-        <button class="buttons" id="filter8" onclick="filterSelect(8)">Trainers</button>
-        <button class="buttons" id="filter9" onclick="filterSelect(9)">Multiple locations</button><br>
+        <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="checkbox" autocomplete="off" name='selection' value="Pool"> Pool
+            </label>
+            <label class="btn btn-secondary active">
+                <input type="checkbox" autocomplete="off" name='selection' value="Female-Only"> Female-Only
+            </label>
+            <label class="btn btn-secondary active">
+                <input type="checkbox" autocomplete="off" name='selection' value="Free parking"> Free parking
+            </label><br><br>
+            <label class="btn btn-secondary active">
+                <input type="checkbox" autocomplete="off" name='selection' value="24/7"> 24/7
+            </label>
+            <label class="btn btn-secondary active">
+                <input type="checkbox" autocomplete="off" name='selection' value="Trainers"> Trainers
+            </label>
+            <label class="btn btn-secondary active">
+                <input type="checkbox" autocomplete="off" name='selection' value="Multiple locations"> Multiple locations
+            </label>
+        </div>
     </div><br>
     <div class="centeredButtons">
         <a href="results.html">
-        <button class="buttons">Search now!</button>
-    </a>
+            <button class="buttons" id="button" type="button">Search now!</button>
+        </a>
     </div>
     <script>
-        function filterSelect(i) {
-            document.getElementById("filter" + i).style.fontWeight = "Bold";
-        }
+       $(document).ready(function() {
+        $("button").click(function(){
+            var favorite = [];
+            $.each($("input[name='selection']:checked"), function(){            
+                favorite.push($(this).val());
+            });
+            alert("Applied filters: " + favorite.join(", "));
+        });
+    });
     </script>
 
-      <!----------------------------------------------->
+    <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->
     <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+        </script>
 
-    <script src="/__/firebase/7.9.1/firebase-app.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-auth.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-firestore.js"></script>
+    
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <script src="scripts/script.js">
+    <script src="scripts/script.js"></script>
     </script>
 </body>
 
