@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>GymFinder</title>
+    <title>Login</title>
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
 
@@ -22,39 +22,9 @@
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" href="styles/style.css">
-    <style>
-        a {
-            text-decoration: none;
-            color: white;
-        }
-
-        .navbar-brand {
-            color: white;
-        }
-
-        input.findgym {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .shortcut {
-            text-align: justify;
-            -ms-text-justify: distribute-all-lines;
-            text-justify: distribute-all-lines;
-            display: inline-block;
-            *display: inline;
-        }
-
-        .stretch {
-            width: 100%;
-            display: inline-block;
-            font-size: 0;
-            line-height: 0
-        }
-    </style>
+    <link rel="stylesheet" href="style/index-style.css">
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
 </head>
 
@@ -85,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login/Signup</a>
+                    <a class="nav-link" href="login.html">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Settings</a>
@@ -94,10 +64,10 @@
         </div>
     </nav>
 
-    <!--FIND A GYM BUTTON-->
-    <a href="results.html">
-        <input class="findgym" type="image" src="images/find-a-gym.png">
-    </a>
+    <!--SIGN IN WIDGET-->
+    <h1>Hello, this is the login page!</h1>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
     
 
     <!--SHORTCUT BAR/FOOTER-->
@@ -140,16 +110,16 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-    <script src="/__/firebase/7.9.1/firebase-app.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-auth.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-firestore.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="scripts/firebase_api.js"> </script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <script src="scripts/script.js">
-    </script>
+    <script src="scripts/login.js"></script>
 
 </body>
 

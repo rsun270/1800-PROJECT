@@ -60,6 +60,10 @@
             border: 1px solid;
         }
 
+        .header-margin {
+            height: 55px;
+        }
+
         .footer-margin {
             height: 55px;
         }
@@ -69,12 +73,22 @@
             width: 30px;
         }
 
+        #buttons {
+            background-color: white;
+            position: sticky;
+            z-index: 1;
+            top: 100px;
+            padding-top: 100px;
+            border: 1px solid;
+            top: 0;
+        }
         #occupancyReportButton {
             background-color: darkgray;
             border: 1px solid black;
             margin-bottom: 0.75em;
         }
 
+<<<<<<< HEAD
         .nav, .nav_pills {
             position: sticky;
             top: 98px;
@@ -82,6 +96,9 @@
             z-index: 1;
             border-bottom: 1px solid;
         }
+=======
+    
+>>>>>>> 77653163702b8934b7e780e8de4617cae349e96a
     </style>
 
 </head>
@@ -92,7 +109,6 @@
     <!------------------->
     <!--  HTML Section -->
     <!------------------->
-
 
     <!--Navigation Bar-->
     <nav class="navbar sticky-top navbar-dark bg-dark py-3">
@@ -113,32 +129,33 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Edit Profile</a>
+                    <a class="nav-link" href="login.html">Login/Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Settings</a>
+                    <a class="nav-link" href="settings.html">Settings</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!--FILTERS-->
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link" href="filter.html">
-                <div>
-                    <input id="filters" type="image" src="images/filter.jpg">
-                </div>
-            </a>
-        </li>
-        <li class="nav-item">
-            <div class="nav-link" href="#">Distance</div>
-        </li>
-        <li class="nav-item">
-            <div class="nav-link" href="#">Price</div>
-        </li>
-
-    </ul>
+        <!--FILTERS-->
+        <div id="buttons" class="header fixed-top center">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="filter.html">
+                        <div>
+                            <input id="filters" type="image" src="images/filter.jpg">
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" id="distance" href="#">Distance</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link" id="price" href="#">Price</div>
+                </li>
+            </ul>
+        </div>
 
     <!--RESULTS LIST-->
     <div class="container">
@@ -148,6 +165,7 @@
                 <div>Rating</div>
                 <div>Address</div>
                 <div>Distance</div>
+                <div>Drop-in Price</div>
             </div>
             <div class="col-4">
                 <div>
@@ -169,6 +187,7 @@
                 <div>Rating</div>
                 <div>Address</div>
                 <div>Distance</div>
+                <div>Drop-in Price</div>
             </div>
             <div class="col-4">
                 <div>
@@ -192,6 +211,7 @@
                 <div>Rating</div>
                 <div>Address</div>
                 <div>Distance</div>
+                <div>Drop-in Price</div>
             </div>
             <div class="col-4">
                 <div>
@@ -215,6 +235,7 @@
                 <div>Rating</div>
                 <div>Address</div>
                 <div>Distance</div>
+                <div>Drop-in Price</div>
             </div>
             <div class="col-4">
                 <div>
@@ -261,6 +282,7 @@
                 <div>Rating</div>
                 <div>Address</div>
                 <div>Distance</div>
+                <div>Drop-in Price</div>
             </div>
             <div class="col-4">
                 <div>
@@ -344,7 +366,7 @@
 
     <div class="footer-margin"></div>
 
-    <!--SHORTCUT BAR/FOOTER-->
+    <!--STICKY SHORTCUT BAR/FOOTER-->
     <div class="footer fixed-bottom center"
         style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
         <a href="index.html" class="shortcut py-3 px-3">
