@@ -73,32 +73,34 @@
             width: 30px;
         }
 
-        #buttons {
+        #filters_bar {
             background-color: white;
-            position: sticky;
+            position: fixed;
             z-index: 1;
-            top: 100px;
-            padding-top: 100px;
-            border: 1px solid;
-            top: 0;
+            border-bottom: 1px solid;
+            width: 100%;
         }
+
         #occupancyReportButton {
             background-color: darkgray;
             border: 1px solid black;
             margin-bottom: 0.75em;
         }
 
-<<<<<<< HEAD
-        .nav, .nav_pills {
-            position: sticky;
-            top: 98px;
-            background-color: white;
-            z-index: 1;
-            border-bottom: 1px solid;
+        .filter_bar_items {
+            color: black;
+            height: 100%;
+            cursor: pointer;
         }
-=======
-    
->>>>>>> 77653163702b8934b7e780e8de4617cae349e96a
+
+        .filter_bar_items:hover {
+            color: black;
+        }
+
+        #first_result {
+            margin-top: 55px;
+        }
+
     </style>
 
 </head>
@@ -138,9 +140,8 @@
         </div>
     </nav>
 
-        <!--FILTERS-->
-        <div id="buttons" class="header fixed-top center">
-            <ul class="nav nav-pills">
+        <!--FILTERS BAR-->
+            <ul class="nav nav-pills" id="filters_bar">
                 <li class="nav-item">
                     <a class="nav-link" href="filter.html">
                         <div>
@@ -149,17 +150,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" id="distance" href="#">Distance</div>
+                        <div class="nav-link filter_bar_items" id="distance" onclick="">Distance</div>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" id="price" href="#">Price</div>
+                    <a onclick="">
+                        <div class="nav-link filter_bar_items" id="price" onclick="">Price</div>
+                    </a>
                 </li>
             </ul>
-        </div>
 
     <!--RESULTS LIST-->
     <div class="container">
-        <div class="row py-2">
+        <div id="first_result" class="row py-2">
             <div class="col-8">
                 <h4>Gym 1</h4>
                 <div>Rating</div>
