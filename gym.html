@@ -26,12 +26,7 @@
     <style>
         a {
             text-decoration: none;
-            color: black;
-        }
-
-        #gym_listing_link:hover {
-            color: black;
-            text-decoration: none;
+            color: white
         }
 
         .navbar-brand {
@@ -53,9 +48,6 @@
             line-height: 0
         }
 
-        .row {
-            border-bottom: solid 1px black;
-        }
 
         .col-4 {
             text-align: center;
@@ -102,10 +94,6 @@
             color: black;
         }
 
-        #first_result {
-            margin-top: 55px;
-        }
-
     </style>
 
 </head>
@@ -145,36 +133,13 @@
         </div>
     </nav>
 
-        <!--FILTERS BAR-->
-            <ul class="nav nav-pills" id="filters_bar">
-                <li class="nav-item">
-                    <a class="nav-link" href="filter.html">
-                        <div>
-                            <input id="filters" type="image" src="images/filter.jpg">
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                        <div class="nav-link filter_bar_items" id="distance" onclick="">Distance</div>
-                </li>
-                <li class="nav-item">
-                    <a onclick="">
-                        <div class="nav-link filter_bar_items" id="price" onclick="">Price</div>
-                    </a>
-                </li>
-            </ul>
-
-    <!--RESULTS LIST-->
+    <!-- GYM X -->
     <div class="container">
-        <div id="first_result" class="row py-2">
+        <div id="first_result" class="row py-4">
             <div class="col-8">
-                <a id="gym_listing_link" href="gym.html">
-                    <h4>Gym 1</h4>
-                </a>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
+                <h4>Club 16</h4>
+                <div>Distance - example</div>
+                <div>Drop-in Price - example</div>
             </div>
             <div class="col-4">
                 <div>
@@ -189,127 +154,9 @@
                     Report Occupancy
                 </button>
             </div>
+            <!-- MAP WITH GYM ON IT -->
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Club16%20Trevor%20Linden%20Fitness%20South%20Burnaby%2C%20%23300%20-%207155%20Kingsway%20Highgate%20Village%20Mall%2C%20Burnaby%2C%20BC%20V5E%202V1&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.enable-javascript.net/blog/divi-discount/">yearly themes</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
         </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 2</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">LOW</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 3</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">LOW</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 4</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">MED</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 5</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">HIGH</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 6</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">HIGH</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-    </div>
 
     <!--MODAL (REPORT OCCUPANCY POP UP WINDOW)-->
     <div class="modal" id="reportOccupancyModal">

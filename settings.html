@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>GymFinder</title>
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
 
@@ -22,9 +22,93 @@
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" href="style/index-style.css">
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        a {
+            text-decoration: none;
+            color: white
+        }
+
+        .navbar-brand {
+            color: white;
+        }
+
+        .shortcut {
+            text-align: justify;
+            -ms-text-justify: distribute-all-lines;
+            text-justify: distribute-all-lines;
+            display: inline-block;
+            *display: inline;
+        }
+
+        .stretch {
+            width: 100%;
+            display: inline-block;
+            font-size: 0;
+            line-height: 0
+        }
+
+
+        .col-4 {
+            text-align: center;
+        }
+
+        h3 {
+            border: 1px solid;
+        }
+
+        .header-margin {
+            height: 55px;
+        }
+
+        .footer-margin {
+            height: 55px;
+        }
+
+        #filters {
+            height: 30px;
+            width: 30px;
+        }
+
+        #filters_bar {
+            background-color: white;
+            position: fixed;
+            z-index: 1;
+            border-bottom: 1px solid;
+            width: 100%;
+        }
+
+        #occupancyReportButton {
+            background-color: darkgray;
+            border: 1px solid black;
+            margin-bottom: 0.75em;
+        }
+
+        .filter_bar_items {
+            color: black;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .filter_bar_items:hover {
+            color: black;
+        }
+
+        .settings_heading {
+            font-weight: bold;
+            font-size: 1.3em;
+            display: inline-block;
+            
+        }
+
+        .settings_item_content {
+            
+        }
+
+        .settings_change_button {
+            float: right;
+        }
+    </style>
 
 </head>
 
@@ -35,9 +119,8 @@
     <!--  HTML Section -->
     <!------------------->
 
-
     <!--Navigation Bar-->
-    <nav class="navbar navbar-dark bg-dark py-3">
+    <nav class="navbar sticky-top navbar-dark bg-dark py-3">
         <a class="navbar-brand" href="index.html">
             <h1>GymFinder</h1>
         </a>
@@ -55,7 +138,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="login.html">Login/Sign Up</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="settings.html">Settings</a>
@@ -64,13 +147,30 @@
         </div>
     </nav>
 
-    <!--SIGN IN WIDGET-->
-    <h1>Hello, this is the login page!</h1>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
+    <!-- SETTINGS -->
+    <div class="container-fluid">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <p class="settings_heading">Postal Code</p>
+                <button type="button" class="btn btn-primary settings_change_button" onclick="exampleFunction()">Change Postal Code</button>
+                <p class="settings_item_content">ABC 123</p>
+            </li>
+            <li class="list-group-item">
+                <p class="settings_heading">Email Address</p>
+                <p class="settings_item_content">example@example.com</p>
+            </li>
+            <li class="list-group-item">
+                <p class="settings_heading">Password</p>
+                <button type="button" class="btn btn-primary settings_change_button" onclick="exampleFunction()">Change Password</button>
+                <p class="settings_item_content">
+                    <input type="password" value="examplePassword" disabled>
+                </p>
+            </li>
+          </ul>
+      </div>
     
 
-    <!--SHORTCUT BAR/FOOTER-->
+    <!--STICKY SHORTCUT BAR/FOOTER-->
     <div class="footer fixed-bottom center"
         style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
         <a href="index.html" class="shortcut py-3 px-3">
@@ -93,7 +193,7 @@
                 Fitness Profile
             </div>
         </a>
-        
+
 
     </div>
 
@@ -110,16 +210,16 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-<script src="scripts/firebase_api.js"> </script>
+    <script src="/__/firebase/7.9.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.9.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.9.1/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <script src="scripts/login.js"></script>
+    <script src="scripts/script.js">
+    </script>
 
 </body>
 
