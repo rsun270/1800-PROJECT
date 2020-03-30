@@ -22,92 +22,9 @@
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="style/settings.css">
     <style>
-        a {
-            text-decoration: none;
-            color: white
-        }
 
-        .navbar-brand {
-            color: white;
-        }
-
-        .shortcut {
-            text-align: justify;
-            -ms-text-justify: distribute-all-lines;
-            text-justify: distribute-all-lines;
-            display: inline-block;
-            *display: inline;
-        }
-
-        .stretch {
-            width: 100%;
-            display: inline-block;
-            font-size: 0;
-            line-height: 0
-        }
-
-
-        .col-4 {
-            text-align: center;
-        }
-
-        h3 {
-            border: 1px solid;
-        }
-
-        .header-margin {
-            height: 55px;
-        }
-
-        .footer-margin {
-            height: 55px;
-        }
-
-        #filters {
-            height: 30px;
-            width: 30px;
-        }
-
-        #filters_bar {
-            background-color: white;
-            position: fixed;
-            z-index: 1;
-            border-bottom: 1px solid;
-            width: 100%;
-        }
-
-        #occupancyReportButton {
-            background-color: darkgray;
-            border: 1px solid black;
-            margin-bottom: 0.75em;
-        }
-
-        .filter_bar_items {
-            color: black;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        .filter_bar_items:hover {
-            color: black;
-        }
-
-        .settings_heading {
-            font-weight: bold;
-            font-size: 1.3em;
-            display: inline-block;
-            
-        }
-
-        .settings_item_content {
-            
-        }
-
-        .settings_change_button {
-            float: right;
-        }
     </style>
 
 </head>
@@ -148,22 +65,22 @@
     </nav>
 
     <!-- SETTINGS -->
-    <div class="container-fluid">
+    <div id="settings_container" class="container-fluid">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <p class="settings_heading">Postal Code</p>
                 <button type="button" class="btn btn-primary settings_change_button" onclick="exampleFunction()">Change Postal Code</button>
-                <p class="settings_item_content">ABC 123</p>
+                <p id="user_postal_code" class="settings_item_content">
+                </p>
             </li>
             <li class="list-group-item">
                 <p class="settings_heading">Email Address</p>
-                <p class="settings_item_content">example@example.com</p>
+                <p id="user_email_address" class="settings_item_content">
+                </p>
             </li>
             <li class="list-group-item">
-                <p class="settings_heading">Password</p>
-                <button type="button" class="btn btn-primary settings_change_button" onclick="exampleFunction()">Change Password</button>
-                <p class="settings_item_content">
-                    <input type="password" value="examplePassword" disabled>
+                <p class="settings_heading">Name</p>
+                <p id="user_name" class="settings_item_content">
                 </p>
             </li>
           </ul>
@@ -200,6 +117,8 @@
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->
     <!----------------------------------------------->
+    
+    <!-- Required Boostrap JS files -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
@@ -210,16 +129,19 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-    <script src="/__/firebase/7.9.1/firebase-app.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-auth.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-firestore.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <!-- Required Firebase API's -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+    <script src="scripts/firebase_api.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <script src="scripts/script.js">
-    </script>
+    <script src="scripts/settings.js"></script>
 
 </body>
 

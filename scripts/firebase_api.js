@@ -1,4 +1,3 @@
-  
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyCqKfMvCHb1tUQ6GSQ7bAmE3f3cij6KZmg",
@@ -12,3 +11,4 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
+

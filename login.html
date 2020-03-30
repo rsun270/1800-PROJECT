@@ -7,6 +7,7 @@
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
 
+
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
     <!----------------------------------------------->
@@ -15,16 +16,17 @@
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
+
+    <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Firebase UI CSS -->
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" href="style/index-style.css">
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="style/index.css">
 
 </head>
 
@@ -64,11 +66,14 @@
         </div>
     </nav>
 
+    <!-- Authentication status -->
+    <div id="sign-in-status"></div>
+    <button id="sign-in" onclick="signUserOut()"></button>
+    <pre id="account-details"></pre>
+
     <!--SIGN IN WIDGET-->
-    <h1>Hello, this is the login page!</h1>
     <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    
+    <!-- <div id="loader">Loading...</div> -->
 
     <!--SHORTCUT BAR/FOOTER-->
     <div class="footer fixed-bottom center"
@@ -93,13 +98,15 @@
                 Fitness Profile
             </div>
         </a>
-        
+
 
     </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->
     <!----------------------------------------------->
+
+    <!-- Required Boostrap JS files -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
@@ -110,11 +117,14 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
-<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-<script src="scripts/firebase_api.js"> </script>
+    <!-- Required Firebase API's -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <script src="scripts/firebase_api.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
