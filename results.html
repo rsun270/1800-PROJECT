@@ -155,223 +155,23 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                        <div class="nav-link filter_bar_items" id="distance" onclick="">Distance</div>
+                        <input type="button" class="nav-link filter_bar_items" id="distance" onclick="sortByDistance()" value="Distance">
                 </li>
                 <li class="nav-item">
                     <a onclick="">
-                        <div class="nav-link filter_bar_items" id="price" onclick="">Price</div>
+                        <input type="button" class="nav-link filter_bar_items" id="price" onclick="sortByPrice()" value="Price">
                     </a>
                 </li>
             </ul>
 
     <!--RESULTS LIST-->
-    <div class="container">
-        <div id="first_result" class="row py-2">
-            <div class="col-8">
-                <a id="gym_listing_link" href="gym.html">
-                    <h4>Gym 1</h4>
-                </a>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <div class="py-3">
-                    <h3 style="color:black">LOW</h3>
-                </div>
-                <!--REPORT OCCUPANCY BUTTON-->
-                <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#reportOccupancyModal">
-                    Report Occupancy
-                </button>
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 2</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">LOW</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 3</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">LOW</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 4</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">MED</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 5</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">HIGH</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
-        </div>
-        <div class="row py-2">
-            <div class="col-8">
-                <h4>Gym 6</h4>
-                <div>Rating</div>
-                <div>Address</div>
-                <div>Distance</div>
-                <div>Drop-in Price</div>
-            </div>
-            <div class="col-4">
-                <div>
-                    <h4>Occupancy:</h4>
-                </div>
-                <!-- <a href="occupancy.html"> -->
-                    <div class="py-3">
-                        <h3 style="color:black">HIGH</h3>
-                    </div>
-                    <!--REPORT OCCUPANCY BUTTON-->
-                    <button id="occupancyReportButton" type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#reportOccupancyModal">
-                        Report Occupancy
-                    </button>
-                <!-- </a> -->
-            </div>
+    <div class="jumbotron">
+        <div id = "cards" class="row padding">
+            <!--- this is where new cards will be inserted-->
         </div>
     </div>
 
-    <!--MODAL (REPORT OCCUPANCY POP UP WINDOW)-->
-    <div class="modal" id="reportOccupancyModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Report Occupancy</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio">Low
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio">Medium
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optradio">High
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
-                        data-target="#thankYouOccupancyModal">Submit</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!--MODAL (THANK YOU POP UP WINDOW AFTER SUBMITTING OCCUPANCY)-->
-    <div class="modal" id="thankYouOccupancyModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Thank you for submitting.</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+    
 
     <div class="footer-margin"></div>
 
@@ -405,6 +205,8 @@
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->
     <!----------------------------------------------->
+    
+    <!-- Required Boostrap JS files -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
@@ -415,17 +217,19 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-    <script src="/__/firebase/7.9.1/firebase-app.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-auth.js"></script>
-    <script src="/__/firebase/7.9.1/firebase-firestore.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <!-- Required Firebase API's -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+    <script src="scripts/firebase_api.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <script src="scripts/firebase_api.js"></script>
-    <script src="scripts/results.js">
-    </script>
+    <script src="scripts/results.js"></script>
 
 </body>
 
