@@ -194,20 +194,21 @@ function sortDistancesArray() {
         console.log(userPostalCode);
         getDistances(function(userLatLong, gymLatLong, doc) {
           let d = calcDistance(userLatLong[0], userLatLong[1], gymLatLong[0], gymLatLong[1]);
-          distances.push({gym_name: doc.data().name, distance: d});
+          distances.push({gym_id: doc.id, distance: d});
           sortByDistance();
         });
-      }); 
+        })
     } else {
       // No user is signed in.
       userPostalCode = localStorage.getItem("postal code");
       getDistances(function(userLatLong, gymLatLong, doc) {
         let d = calcDistance(userLatLong[0], userLatLong[1], gymLatLong[0], gymLatLong[1]);
-        distances.push({gym_name: doc.data().name, distance: d});
+        distances.push({gym_id: doc.id, distance: d});
         sortByDistance();
       });
     }
   })
+  
 }
 
 // EXECUTION START
@@ -216,6 +217,4 @@ let userPostalCode;
 let userLatLong;
 let distances = []; // array to store gym distances in
 sortDistancesArray();
-
-
 
