@@ -127,7 +127,7 @@ function getLatLongFromPostal(postalCode, callback) {
   });
 }
 
-// Fills the distances array with objects storing gym: distance pairs
+// Fills the distances array with objects storing gymid: distance pairs
 function getDistances(pushToDistances) {
   getLatLongFromPostal(userPostalCode, function (data) {
     userLatLong = data;        
