@@ -1,10 +1,11 @@
 let dbRef = db.collection("gyms");
 
+
 /** Sorts list by distance (closest to farthest) */
 function sortByDistance(distance) {
   // distances contains an array with an object for each gym containing a gym: distance pair
     distances.sort(compare);
-    // displayCards(snap);
+    //displayCards(distances);
 }
 
 /** Sorts list by price (lowest to highest) */
@@ -16,7 +17,7 @@ function sortByPrice() {
     })
 }
 
-function displayGym(gym, id) { //input json object, and a unique ID for the recipe
+function displayGym(gym, id) { //input json object, and a unique ID for the gym
   var n = gym.name;
   console.log(n); //should print out name
   var para = document.createElement("div");
@@ -29,6 +30,7 @@ function displayGym(gym, id) { //input json object, and a unique ID for the reci
     window.location.href = "gym.html" + id; //pass along ID of the recipe doc.
   })
 }
+
 
 function displayCards(CardObjects) { //takes in collection
   CardObjects.forEach(function (doc) { //cycle thru collection
@@ -52,10 +54,10 @@ function createOneCard(c) {
   var text = document.createTextNode(c.data().name);
   name.appendChild(text);
 
-  //var distance = document.createElement("p");
-  //distance.setAttribute("class", "card-text");
-  //var text = document.createTextNode(c.data().distance);
-  //distance.appendChild(text);
+  var distance = document.createElement("p");
+  distance.setAttribute("class", "card-text");
+  var text = document.createTextNode();
+  distance.appendChild(text);
 
   var address = document.createElement("p");
   address.setAttribute("class", "card-text");
