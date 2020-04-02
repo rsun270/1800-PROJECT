@@ -166,7 +166,7 @@
             $.each($("input[name='selection']:checked"), function(){            
                 favorite.push($(this).val());
             });
-            localStorage.setItem("filterList", favorite);
+            localStorage.setItem("filterList", Array.from(favorite));
         });
     });
     </script>

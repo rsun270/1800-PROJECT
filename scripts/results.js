@@ -1,7 +1,7 @@
 // EXECUTION START
 sortDistancesArray();
 localStorage.setItem("filterList", []);
-
+console.log(localStorage.getItem("filterList")[1]);
 //======================//
 // Constants            //
 //======================//
@@ -37,39 +37,55 @@ let distanceCardArray = [];
 function sortByDistance(distance) {
   document.getElementById("cards").innerHTML = '';
   // distances contains an array with an object for each gym containing a gym_id: value and distance: value
-    dbRef.get().then(function (snap) {
-      // Display a card for each document in the array
-      displayCards(snap);
-      let gymCardsList = Array.prototype.slice.call(document.getElementsByClassName("gymCard"));
-      console.log(gymCardsList.length);
-      for (let i = 0; i < gymCardsList.length; i++) {
-        gymCardsList[i] = gymCardsList[i].id;
-        console.log("card id " + gymCardsList[i].id);
-      }
-      console.log(gymCardsList);
-      gymCardsList.sort(function(a, b) {
-        return a - b;
-      });
-      for (let i = 0; i < gymCardsList.length; i++) {
-        let card = document.getElementById(gymCardsList[i]);
-        document.getElementById("cards").appendChild(card); //stick it in the div
-      }
-    })
+  dbRef.get().then(function (snap) {
+    // Display a card for each document in the array
+    displayCards(snap);
+    let gymCardsList = Array.prototype.slice.call(document.getElementsByClassName("gymCard"));
+    console.log(gymCardsList.length);
+    for (let i = 0; i < gymCardsList.length; i++) {
+      gymCardsList[i] = gymCardsList[i].id;
+      console.log("card id " + gymCardsList[i].id);
+    }
+    console.log(gymCardsList);
+    gymCardsList.sort(function (a, b) {
+      return a - b;
+    });
+    for (let i = 0; i < gymCardsList.length; i++) {
+      let card = document.getElementById(gymCardsList[i]);
+      document.getElementById("cards").appendChild(card); //stick it in the div
+    }
+  })
 
 }
 
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
   document.getElementById("cards").innerHTML = '';
-  if (localStorage.getItem("filterList").length==0){
+  if (localStorage.getItem("filterList").length == 0) {
     dbRef.orderBy("price")
       .get()
       .then(function (snap) {
         displayCards(snap);
       })
-    }else{
-      
+    dbRef.get().then(function (doc) {
+      doc.forEach(function (doc1) {
+        console.log(doc1.data().Filters, doc1.id);
+      });
+    });
+  } else {
+    // for(let i = 0; i<10; i++){
+    //   for(let j = )
+    // }
+  }
+}
+
+function compareArray(arr1, arr2) {
+  let filteredArr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    for (let i = 0; i < arr2.length; i++) {
+      if(arr1[i] == 1);
     }
+  }
 }
 
 /** displays the cards */
@@ -108,7 +124,7 @@ function createOneCard(c) {
       coldiv.setAttribute("class", "gymCard col-md-3");
       break;
     }
-}
+  }
   distance.appendChild(text);
 
   // the address
