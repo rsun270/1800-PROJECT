@@ -37,11 +37,15 @@ function sortByDistance(distance) {
 
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
-  dbRef.orderBy("price")
-    .get()
-    .then(function (snap) {
-      displayCards(snap);
-    })
+  if(localStorage.getItem("filterList").length==0){
+    dbRef.orderBy("price")
+      .get()
+      .then(function (snap) {
+        displayCards(snap);
+      })
+    }else{
+      
+    }
 }
 
 /** displays the cards */
@@ -93,7 +97,7 @@ function createOneCard(c) {
   var text = document.createTextNode("Occupancy: " + c.data().occupancy);
   occupancy.appendChild(text);
 
-  var a = document.createElement("");
+  var a = document.createElement("a");
   a.setAttribute("href", "gym.html");
   a.setAttribute("class", "btn btn-outline-secondary");
   var text = document.createTextNode("View Gym");

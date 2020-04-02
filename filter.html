@@ -123,9 +123,6 @@
     <h1 if="filterList">Filters:</h1>
     <div class="centeredButtons">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" name='selection'> Rating
-            </label>
             <label class="btn btn-secondary">
                 <input type="radio" name="options" id="option2" autocomplete="off" name='selection'> Price
             </label>
@@ -169,7 +166,7 @@
             $.each($("input[name='selection']:checked"), function(){            
                 favorite.push($(this).val());
             });
-            alert("Applied filters: " + favorite.join(", "));
+            localStorage.setItem("filterList", favorite);
         });
     });
     </script>
@@ -193,7 +190,6 @@
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <script src="scripts/script.js"></script>
     </script>
 </body>
 
