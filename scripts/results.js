@@ -1,14 +1,14 @@
-// EXECUTION START
-sortDistancesArray();
-// setTimeout(sortByDistance, 9000);
-if(localStorage.getItem("filterList")== undefined){
-  localStorage.setItem("filterList", []);
-}
-console.log(localStorage.getItem("filterList")[1]);
 //======================//
 // Constants            //
 //======================//
 let dbRef = db.collection("gyms");
+// EXECUTION START
+checkFilters();
+sortDistancesArray();
+// setTimeout(sortByDistance, 9000);
+if (localStorage.getItem("filterList") == undefined) {
+  localStorage.setItem("filterList", []);
+}
 
 //======================//
 // Global Variables     //
@@ -20,7 +20,6 @@ let userLatLong;
 let distances = []; // array to store gym distances in
 let idCounter = 0;
 let distanceCardArray = [];
-let filteredArr = [];
 
 //======================//
 // HTML DOM Elements    //
@@ -63,38 +62,44 @@ function sortByDistance(distance) {
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
   document.getElementById("cards").innerHTML = '';
-  if (localStorage.getItem("filterList").length == 0) {
-    dbRef.orderBy("price")
-      .get()
-      .then(function (snap) {
-        displayCards(snap);
-      })
-    
-  } else {
-    dbRef.get().then(function (doc) {
-      doc.forEach(function (doc1) {
-        console.log(localStorage.getItem("filterList"));
-        console.log(doc1.id,doc1.data().Filters);
-        compareArray(localStorage.getItem("filterList"), doc1.data().Filters);
-        
+  dbRef.orderBy("price")
+    .get()
+    .then(function (snap) {
+      displayCards(snap);
+    });
+
+}
+
+
+
+function checkFilters() {
+  if (localStorage.getItem("filterList").length > 0) {
+    let filterListArray = JSON.parse(localStorage.getItem("filterList"));
+        dbRef.get().then(function (doc) {
+        doc.forEach(function (doc1) {
+        // console.log(filterListArray);
+        // console.log(doc1.id, doc1.data().Filters);
+        compareArray(filterListArray, doc1.data().Filters, doc1.data().id);
       });
     });
   }
-  console.log(filteredArr);
 }
 
-function compareArray(arr1, arr2) {
+function compareArray(arr1, arr2, arr2ID) {
   let counter = 0;
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr2.length; j++) {
-      if(arr1[i] == arr2[j]){
+      if (arr1[i] == arr2[j]) {
+        console.log("Counter before = " + counter);
         counter++;
+        console.log("Counter after = " + counter);
       }
     }
   }
-  if(counter == arr1.length){
+  if (counter == arr1.length) {
     filteredArr.push(arr2);
   }
+  console.log(filteredArr)
 }
 
 /** displays the cards */
@@ -241,7 +246,7 @@ function getDistances(pushToDistances) {
         pushToDistances(userLatLong, gymLatLong, doc);
         i++;
         if (i == 9) {
-          // The distances array is created at this point, can proceed
+          // DISTANCES ARRAY HAS BEEN CREATED, CAN PROCEED WITH ANY FUNCTIONS THAT NEED DISTANCE
           console.log("Distances array created: ");
           console.log(distances);
           sortByDistance();
