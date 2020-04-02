@@ -46,6 +46,25 @@ var uiConfig = {
         }
     };
 
+/** <a id="profile" class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a id="logout" class="nav-link" href=""></a> */
+
+
+function updateNavBar(){
+    let profile = document.getElementById("profile");
+    profile.innerHTML = "Profile";
+    profile.href = "profile.html";
+
+    let logOut = document.getElementById("logout");
+    logOut.innerHTML = "Log Out";
+    logOut.href = "login.html";
+
+    document.getElementById("index_link").href = "main.html";
+}
+
+
 function signUserOut() {
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
@@ -53,13 +72,17 @@ function signUserOut() {
       }).catch(function(error) {
         // An error happened.
       });
+      location.reload();
 }
 
 let ui;
 initApp = function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            // User is signed in.            
+            // User is signed in.       
+            
+            updateNavBar();
+            
             document.getElementById('sign-in').style.visibility = "visible";
             let displayName = user.displayName;
             let email = user.email;

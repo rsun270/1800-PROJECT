@@ -2,6 +2,9 @@ initApp = function() {
     firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         // User is signed in.
+
+        updateNavBar();
+
         let displayName = user.displayName;
         let email = user.email;
         document.getElementById("user_name").innerHTML = displayName;
@@ -24,3 +27,22 @@ initApp = function() {
 window.addEventListener('load', function () {
     initApp();
 });
+
+// Directs to correct homepage based on log in status
+function homeClick() {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        document.location.href = "main.html";
+      } else {
+        // No user is signed in.
+        document.location.href = "index.html";
+      }
+    });
+  }
+
+
+/** updates navBar's buttons if user is signed in */
+function updateNavBar(){
+    document.getElementById("index_link").href = "main.html";
+}
