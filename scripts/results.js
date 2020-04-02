@@ -217,7 +217,7 @@ function getDistances(pushToDistances) {
         pushToDistances(userLatLong, gymLatLong, doc);
         i++;
         if (i == 9) {
-          // The distances array is created at this point, can proceed
+          // DISTANCES ARRAY HAS BEEN CREATED, CAN PROCEED WITH ANY FUNCTIONS THAT NEED DISTANCE
           console.log("Distances array created: ");
           console.log(distances);
           sortByDistance();
