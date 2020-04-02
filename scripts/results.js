@@ -93,8 +93,8 @@ function createOneCard(c) {
   var text = document.createTextNode("Occupancy: " + c.data().occupancy);
   occupancy.appendChild(text);
 
-  var a = document.createElement("a");
-  a.setAttribute("href", c.data().id + ".html");
+  var a = document.createElement("");
+  a.setAttribute("href", "gym.html");
   a.setAttribute("class", "btn btn-outline-secondary");
   var text = document.createTextNode("View Gym");
   a.appendChild(text);
@@ -226,7 +226,6 @@ function sortDistancesArray() {
   })
   
 }
-
 // EXECUTION START
 sortDistancesArray();
 
