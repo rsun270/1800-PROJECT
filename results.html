@@ -123,7 +123,7 @@
 
     <!--Navigation Bar-->
     <nav class="navbar sticky-top navbar-dark bg-dark py-3">
-        <a id="index_link" class="navbar-brand" onclick="homeClick()">
+        <a id="index_link" class="navbar-brand">
             <h1>GymFinder</h1>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -140,10 +140,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login/Sign Up</a>
+                    <a id="profile" class="nav-link" href="login.html">Login/Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="settings.html">Settings</a>
+                    <a id="logout" class="nav-link" href=""></a>
                 </li>
             </ul>
         </div>
@@ -175,31 +175,29 @@
         </div>
     </div>
 
-    
-
     <div class="footer-margin"></div>
 
     <!--STICKY SHORTCUT BAR/FOOTER-->
     <div class="footer fixed-bottom center"
-        style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
+        style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center; text-decoration: none;">
         <a href="index.html" class="shortcut py-3 px-3">
-            <div>
+            <div style="color:white;">
                 Home
             </div>
         </a>
         <a href="results.html" class="shortcut py-3 px-3">
-            <div>
+            <div style="color:white;">
                 Find a Gym
             </div>
         </a>
         <a href="#" class="shortcut py-3 px-3">
-            <div>
+            <div style="color:white;">
                 Points
             </div>
         </a>
         <a href="#" class="shortcut py-3 px-3">
-            <div>
-                Fitness Profile
+            <div style="color:white;">
+                Profile
             </div>
         </a>
 
