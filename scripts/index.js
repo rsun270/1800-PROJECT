@@ -8,8 +8,8 @@ var firebaseConfig = {
     appId: "1:318996314247:web:62be32d16bbc5364272022"
 };
 // Initialize Firebase
-let app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore(app);
+// let app = firebase.initializeApp(firebaseConfig);
+// const db = firebase.firestore(app);
 const form = document.querySelector('#addPostalCode');
 let loggedIn = false;
 let userRef;
@@ -49,6 +49,7 @@ function submitPostalCode() {
         // firebase.auth().currentUser.set({"Postal Code" : currentPostalCode },{merge:true});
     } else {
         localStorage.setItem("postalCodeLocal", currentPostalCode);
+        console.log(localStorage.getItem("postalCodeLocal"));
     }
 }
 
