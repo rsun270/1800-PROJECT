@@ -1,8 +1,9 @@
 // EXECUTION START
 sortDistancesArray();
 // setTimeout(sortByDistance, 9000);
-
-localStorage.setItem("filterList", []);
+if(localStorage.getItem("filterList")== undefined){
+  localStorage.setItem("filterList", []);
+}
 console.log(localStorage.getItem("filterList")[1]);
 //======================//
 // Constants            //
@@ -58,7 +59,8 @@ function sortByDistance(distance) {
     })
 
 }
-
+//compare arrays
+let checker = (arr, target) => target.every(v => arr.includes(v));
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
   document.getElementById("cards").innerHTML = '';
@@ -68,26 +70,26 @@ function sortByPrice() {
       .then(function (snap) {
         displayCards(snap);
       })
+    
+  } else {
     dbRef.get().then(function (doc) {
       doc.forEach(function (doc1) {
-        console.log(doc1.data().Filters, doc1.id);
+        console.log(doc1.id, checker(doc1.data().Filters, localStorage.getItem("filterList")));
       });
     });
-  } else {
-    // for(let i = 0; i<10; i++){
-    //   for(let j = )
-    // }
   }
 }
 
-function compareArray(arr1, arr2) {
-  let filteredArr = [];
-  for (let i = 0; i < arr1.length; i++) {
-    for (let i = 0; i < arr2.length; i++) {
-      if(arr1[i] == 1);
-    }
-  }
-}
+// function compareArray(arr1, arr2) {
+  // let filteredArr = [];
+  // for (let i = 0; i < arr1.length; i++) {
+  //   for (let j = 0; j < arr2.length; j++) {
+  //     if(arr1[i] == arr2[j]){
+
+  //     }
+  //   }
+  // }
+// }
 
 /** displays the cards */
 function displayCards(CardObjects) { //takes in collection
