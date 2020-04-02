@@ -93,8 +93,8 @@ function createOneCard(c) {
   var text = document.createTextNode("Occupancy: " + c.data().occupancy);
   occupancy.appendChild(text);
 
-  var a = document.createElement("");
-  a.setAttribute("href", "gym.html");
+  var a = document.createElement("button");
+  a.setAttribute("onclick", loadPage(c.data().name));
   a.setAttribute("class", "btn btn-outline-secondary");
   var text = document.createTextNode("View Gym");
   a.appendChild(text);
@@ -112,6 +112,12 @@ function createOneCard(c) {
 }
 
 
+
+// Function to load gym.html, passing the clicked gym info
+function loadPage(c){
+  localStorage.setItem("Loaded Gym", c);
+  console.log(localStorage.getItem("Loaded Gym"));
+}
 
 // Directs to correct homepage based on log in status
 function homeClick() {
@@ -226,6 +232,7 @@ function sortDistancesArray() {
   })
   
 }
+
 // EXECUTION START
 sortDistancesArray();
 
