@@ -172,18 +172,16 @@
         var multipleLocationCheck = document.getElementById("Multiple_locations");
 
         function addFilterList(){
-            localStorage.setItem("filterList", favorite);
+            localStorage.setItem("filterList",JSON.stringify(favorite));
         }
 
         function checkPool() {
             if (poolCheck.checked && !favorite.includes('Pool')) {
                 favorite.push(poolCheck.value);
-                console.log(favorite);
             }else{
                 for(let i = 0; i<favorite.length; i++){
                     if(favorite[i] == poolCheck.value){
                         favorite.splice(i,1);
-                        console.log(favorite);
                     }
                 }
             }
