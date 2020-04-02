@@ -281,12 +281,29 @@ function compare(a, b) {
   return 0;
 }
 
+
+/** Updates the NavBar based on whether user is logged in or not */
+function updateNavBar() {
+    let profile = document.getElementById("profile");
+    profile.innerHTML = "Profile";
+    profile.href = "profile.html";
+
+    let logOut = document.getElementById("logout");
+    logOut.innerHTML = "Log Out";
+    logOut.href = "login.html";
+
+    document.getElementById("index_link").onclick = homeClick;
+}
+
 // Sorts the distances array from closest to furthest away from the user
 function sortDistancesArray() {
   // Get user postal code from db or local storage based on sign in status
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
+
+      updateNavBar();
+
       db.collection("users").doc(user.uid)
         .get().then(function (snap) {
           userPostalCode = snap.data()["postal code"]; //get postal code of a user
