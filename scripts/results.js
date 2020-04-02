@@ -58,7 +58,6 @@ function sortByDistance(distance) {
         document.getElementById("cards").appendChild(card); //stick it in the div
       }
     })
-
 }
 
 /** Sorts list by price (lowest to highest) */
