@@ -92,9 +92,10 @@ function createOneCard(c) {
   var text = document.createTextNode("Occupancy: " + c.data().occupancy);
   occupancy.appendChild(text);
 
-  var a = document.createElement("a");
-  a.setAttribute("href", c.data().id + ".html");
+  var a = document.createElement("button");
+  // a.setAttribute("href", c.data().id + ".html");
   a.setAttribute("class", "btn btn-outline-secondary");
+  a.setAttribute("onclick", loadPage(c.data().name));
   var text = document.createTextNode("View Gym");
   a.appendChild(text);
 
@@ -109,7 +110,11 @@ function createOneCard(c) {
   coldiv.appendChild(carddiv);
   document.getElementById("cards").appendChild(coldiv); //stick it in the div
 }
-
+//change page funtion
+function loadPage(c){
+  localStorage.setItem("Loaded Gym", c);
+  console.log(localStorage.getItem("Loaded Gym"));
+}
 // Directs to correct homepage based on log in status
 function homeClick() {
   firebase.auth().onAuthStateChanged(function (user) {
@@ -226,4 +231,5 @@ function sortDistancesArray() {
 
 // EXECUTION START
 sortDistancesArray();
+
 
