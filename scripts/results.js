@@ -1,13 +1,13 @@
 //======================//
 // Constants            //
 //======================//
-
+let dbRef = db.collection("gyms");
 
 //======================//
 // Global Variables     //
 //======================//
 
-let dbRef = db.collection("gyms");
+
 let userPostalCode;
 let userLatLong;
 let distances = []; // array to store gym distances in
@@ -32,7 +32,7 @@ function sortByDistance(distance) {
   // distances contains an array with an object for each gym containing a gym: distance pair
     distances.sort(compare);
     console.log(distances);
-    //displayCards(distances);
+    //displayCardsDist(distances);
 }
 
 /** Sorts list by price (lowest to highest) */
@@ -51,6 +51,7 @@ function displayCards(CardObjects) { //takes in collection
   })
 }
 
+
 // Creates a gym card 
 function createOneCard(c) {
   var coldiv = document.createElement("div");
@@ -66,11 +67,11 @@ function createOneCard(c) {
   name.setAttribute("class", "card-title");
   var text = document.createTextNode(c.data().name);
   name.appendChild(text);
-
-  //var distance = document.createElement("p");
-  //distance.setAttribute("class", "card-text");
-  //var text = document.createTextNode();
-  //distance.appendChild(text);
+  
+  var distance = document.createElement("p");
+  distance.setAttribute("class", "card-text");
+  var text = document.createTextNode("Distance");
+  distance.appendChild(text);
 
   var address = document.createElement("p");
   address.setAttribute("class", "card-text");
@@ -109,6 +110,8 @@ function createOneCard(c) {
   coldiv.appendChild(carddiv);
   document.getElementById("cards").appendChild(coldiv); //stick it in the div
 }
+
+
 
 // Directs to correct homepage based on log in status
 function homeClick() {
