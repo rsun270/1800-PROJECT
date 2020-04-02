@@ -135,40 +135,114 @@
     <div class="centeredButtons">
         <div class="btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Pool"> Pool
+                <input onclick="checkPool()" id="pool" type="checkbox" autocomplete="off" name='selection' value="Pool"> Pool
             </label>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Female-Only"> Female-Only
+                <input onclick="checkFemaleOnly()"id="Female-Only" type="checkbox" autocomplete="off" name='selection' value="Female-Only">
+                Female-Only
             </label>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Free parking"> Free parking
+                <input onclick="checkFreeParking()"id="Free_parking" type="checkbox" autocomplete="off" name='selection' value="Free parking"> Free
+                parking
             </label><br><br>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="24/7"> 24/7
+                <input onclick="checkHours()"id="24/7" type="checkbox" autocomplete="off" name='selection' value="24/7"> 24/7
             </label>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Trainers"> Trainers
+                <input onclick="checkTrainers()"id="Trainers" type="checkbox" autocomplete="off" name='selection' value="Trainers"> Trainers
             </label>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Multiple locations"> Multiple locations
+                <input onclick="checkMultipleLocations()"id="Multiple_locations" type="checkbox" autocomplete="off" name='selection'
+                    value="Multiple locations"> Multiple locations
             </label>
         </div>
     </div><br>
     <div class="centeredButtons">
         <a href="results.html">
-            <button class="buttons" id="button" type="button">Search now!</button>
+            <button class="buttons" id="button" type="button" onclick="addFilterList()">Search now!</button>
         </a>
     </div>
     <script>
-       $(document).ready(function() {
-        $("button").click(function(){
-            var favorite = [];
-            $.each($("input[name='selection']:checked"), function(){            
-                favorite.push($(this).val());
-            });
-            localStorage.setItem("filterList", Array.from(favorite));
-        });
-    });
+        var favorite = [];
+        var poolCheck = document.getElementById("pool");
+        var femaleOnlyCheck = document.getElementById("Female-Only");
+        var freeParkingCheck = document.getElementById("Free_parking");
+        var hoursCheck = document.getElementById("24/7");
+        var trainersCheck = document.getElementById("Trainers");
+        var multipleLocationCheck = document.getElementById("Multiple_locations");
+
+        function addFilterList(){
+            localStorage.setItem("filterList", favorite);
+        }
+
+        function checkPool() {
+            if (poolCheck.checked && !favorite.includes('Pool')) {
+                favorite.push(poolCheck.value);
+                console.log(favorite);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == poolCheck.value){
+                        favorite.splice(i,1);
+                        console.log(favorite);
+                    }
+                }
+            }
+        }
+        function checkFemaleOnly() {
+            if (femaleOnlyCheck.checked && !favorite.includes('Female-Only')) {
+                favorite.push(femaleOnlyCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == femaleOnlyCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkFreeParking() {
+            if (freeParkingCheck.checked && !favorite.includes('Free parking')) {
+                favorite.push(freeParkingCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == freeParkingCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkHours() {
+            if (hoursCheck.checked && !favorite.includes('24/7')) {
+                favorite.push(hoursCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == hoursCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkTrainers() {
+            if (trainersCheck.checked && !favorite.includes('Trainers')) {
+                favorite.push(trainersCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == trainersCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkMultipleLocations() {
+            if (multipleLocationCheck.checked && !favorite.includes('Multiple locations')) {
+                favorite.push(multipleLocationCheck.value);;
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == multipleLocationCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
     </script>
 
     <!----------------------------------------------->
@@ -184,7 +258,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
         </script>
 
-    
+
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
     <!----------------------------------------------->

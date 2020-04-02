@@ -1,14 +1,15 @@
-// EXECUTION START
-sortDistancesArray();
-// setTimeout(sortByDistance, 9000);
-if(localStorage.getItem("filterList")== undefined){
-  localStorage.setItem("filterList", []);
-}
-console.log(localStorage.getItem("filterList")[1]);
 //======================//
 // Constants            //
 //======================//
 let dbRef = db.collection("gyms");
+// EXECUTION START
+checkFilters();
+sortDistancesArray();
+// setTimeout(sortByDistance, 9000);
+if (localStorage.getItem("filterList") == undefined) {
+  localStorage.setItem("filterList", []);
+}
+console.log(localStorage.getItem("filterList")[1]);
 
 //======================//
 // Global Variables     //
@@ -41,59 +42,62 @@ let filteredArr = [];
 function sortByDistance(distance) {
   document.getElementById("cards").innerHTML = '';
   // distances contains an array with an object for each gym containing a gym_id: value and distance: value
-    dbRef.get().then(function (snap) {
-      // Display a card for each document in the array
-      displayCards(snap);
-      let gymCardsList = Array.prototype.slice.call(document.getElementsByClassName("gymCard"));
-      // console.log(gymCardsList.length);
-      for (let i = 0; i < gymCardsList.length; i++) {
-        gymCardsList[i] = gymCardsList[i].id;
-      }
-      // console.log(gymCardsList);
-      gymCardsList.sort(function(a, b) {
-        return a - b;
-      });
-      for (let i = 0; i < gymCardsList.length; i++) {
-        let card = document.getElementById(gymCardsList[i]);
-        document.getElementById("cards").appendChild(card); //stick it in the div
-      }
-    })
+  dbRef.get().then(function (snap) {
+    // Display a card for each document in the array
+    displayCards(snap);
+    let gymCardsList = Array.prototype.slice.call(document.getElementsByClassName("gymCard"));
+    // console.log(gymCardsList.length);
+    for (let i = 0; i < gymCardsList.length; i++) {
+      gymCardsList[i] = gymCardsList[i].id;
+    }
+    // console.log(gymCardsList);
+    gymCardsList.sort(function (a, b) {
+      return a - b;
+    });
+    for (let i = 0; i < gymCardsList.length; i++) {
+      let card = document.getElementById(gymCardsList[i]);
+      document.getElementById("cards").appendChild(card); //stick it in the div
+    }
+  })
 
 }
 
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
   document.getElementById("cards").innerHTML = '';
-  if (localStorage.getItem("filterList").length == 0) {
-    dbRef.orderBy("price")
-      .get()
-      .then(function (snap) {
-        displayCards(snap);
-      })
-    
-  } else {
-    dbRef.get().then(function (doc) {
-      doc.forEach(function (doc1) {
+  dbRef.orderBy("price")
+    .get()
+    .then(function (snap) {
+      displayCards(snap);
+    });
+
+}
+
+
+
+function checkFilters() {
+  if (localStorage.getItem("filterList").length > 0) {
+        dbRef.get().then(function (doc) {
+        doc.forEach(function (doc1) {
         console.log(localStorage.getItem("filterList"));
-        console.log(doc1.id,doc1.data().Filters);
+        console.log(doc1.id, doc1.data().Filters);
         compareArray(localStorage.getItem("filterList"), doc1.data().Filters);
-        
       });
     });
   }
-  console.log(filteredArr);
 }
 
 function compareArray(arr1, arr2) {
   let counter = 0;
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr2.length; j++) {
-      if(arr1[i] == arr2[j]){
+      if (arr1[i] == arr2[j]) {
         counter++;
       }
+      console.log("coutner = " + counter);
     }
   }
-  if(counter == arr1.length){
+  if (counter == arr1.length) {
     filteredArr.push(arr2);
   }
 }
