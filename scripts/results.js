@@ -1,14 +1,68 @@
+// EXECUTION START
+sortDistancesArray();
+
+
+
+
+//======================//
+// Constants            //
+//======================//
+
+
+//======================//
+// Global Variables     //
+//======================//
+
 let dbRef = db.collection("gyms");
+let userPostalCode;
+let userLatLong;
+let distances = []; // array to store gym distances in
+let idCounter = 0;
+let distanceCardArray = [];
+
+//======================//
+// HTML DOM Elements    //
+//======================//
+
+
+//======================//
+// Constructors         //
+//======================//
+
+
+
+//======================//
+// Functions            //
+//======================//
 
 /** Sorts list by distance (closest to farthest) */
 function sortByDistance(distance) {
-  // distances contains an array with an object for each gym containing a gym: distance pair
-    distances.sort(compare);
-    // displayCards(snap);
+  document.getElementById("cards").innerHTML = '';
+  // distances contains an array with an object for each gym containing a gym_id: value and distance: value
+    dbRef.get().then(function (snap) {
+      // Display a card for each document in the array
+      displayCards(snap);
+      let gymCardsList = Array.prototype.slice.call(document.getElementsByClassName("gymCard"));
+      console.log(gymCardsList.length);
+      for (let i = 0; i < gymCardsList.length; i++) {
+        gymCardsList[i] = gymCardsList[i].id;
+        console.log("card id " + gymCardsList[i].id);
+      }
+      console.log(gymCardsList);
+      gymCardsList.sort(function(a, b) {
+        return a - b;
+      });
+      for (let i = 0; i < gymCardsList.length; i++) {
+        let card = document.getElementById(gymCardsList[i]);
+        document.getElementById("cards").appendChild(card); //stick it in the div
+      }
+    })
+
 }
 
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
+  document.getElementById("cards").innerHTML = '';
   dbRef.orderBy("price")
     .get()
     .then(function (snap) {
@@ -16,25 +70,13 @@ function sortByPrice() {
     })
 }
 
-function displayGym(gym, id) { //input json object, and a unique ID for the recipe
-  var n = gym.name;
-  console.log(n); //should print out name
-  var para = document.createElement("div");
-  para.setAttribute("id", id);
-  document.body.appendChild(para);
-  var node = document.createTextNode(n); //name is from firestore
-  para.appendChild(node);
-  $("#" + id).click(function () { //attach listener to each recipe
-    alert("in handler!" + id + " was clicked!"); //for debug
-    window.location.href = "gym.html" + id; //pass along ID of the recipe doc.
-  })
-}
-
+/** displays the cards */
 function displayCards(CardObjects) { //takes in collection
   CardObjects.forEach(function (doc) { //cycle thru collection
     createOneCard(doc); //create card for one recipe/gym
   })
 }
+
 
 // Creates a gym card 
 function createOneCard(c) {
@@ -52,10 +94,19 @@ function createOneCard(c) {
   var text = document.createTextNode(c.data().name);
   name.appendChild(text);
 
-  //var distance = document.createElement("p");
-  //distance.setAttribute("class", "card-text");
-  //var text = document.createTextNode(c.data().distance);
-  //distance.appendChild(text);
+  var distance = document.createElement("p");
+  distance.setAttribute("class", "card-text");
+  // Loops through each object in distances array
+  for (let i = 0; i < distances.length; i++) {
+    if (distances[i].gym_id === c.id) {
+      // Object gym_id matches db document id
+      var text = document.createTextNode(distances[i].distance.toFixed(2) + " km away");
+      coldiv.setAttribute("id", distances[i].distance + "");
+      coldiv.setAttribute("class", "gymCard col-md-3");
+      break;
+    }
+}
+  distance.appendChild(text);
 
   var address = document.createElement("p");
   address.setAttribute("class", "card-text");
@@ -85,7 +136,7 @@ function createOneCard(c) {
 
   // stitch it all together 
   cardbodydiv.appendChild(name);
-  //cardbodydiv.appendChild(distance);
+  cardbodydiv.appendChild(distance);
   cardbodydiv.appendChild(address);
   cardbodydiv.appendChild(price);
   cardbodydiv.appendChild(occupancy);
@@ -127,7 +178,7 @@ function getLatLongFromPostal(postalCode, callback) {
   });
 }
 
-// Fills the distances array with objects storing gymid: distance pairs
+// Fills the distances array with objects storing gymid: value and distance: value pairs
 function getDistances(pushToDistances) {
   getLatLongFromPostal(userPostalCode, function (data) {
     userLatLong = data;        
@@ -193,7 +244,7 @@ function sortDistancesArray() {
         getDistances(function(userLatLong, gymLatLong, doc) {
           let d = calcDistance(userLatLong[0], userLatLong[1], gymLatLong[0], gymLatLong[1]);
           distances.push({gym_id: doc.id, distance: d});
-          sortByDistance();
+          distances.sort(compare);
         });
         })
     } else {
@@ -202,17 +253,10 @@ function sortDistancesArray() {
       getDistances(function(userLatLong, gymLatLong, doc) {
         let d = calcDistance(userLatLong[0], userLatLong[1], gymLatLong[0], gymLatLong[1]);
         distances.push({gym_id: doc.id, distance: d});
-        sortByDistance();
+        distances.sort(compare);
+
       });
     }
   })
   
 }
-
-// EXECUTION START
-
-let userPostalCode;
-let userLatLong;
-let distances = []; // array to store gym distances in
-sortDistancesArray();
-
