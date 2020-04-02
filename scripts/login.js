@@ -49,6 +49,7 @@ var uiConfig = {
 function signUserOut() {
     firebase.auth().signOut().then(function() {
         // Sign-out successful.
+        localStorage.removeItem("postalCodeLocal");
       }).catch(function(error) {
         // An error happened.
       });

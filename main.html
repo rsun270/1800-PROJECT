@@ -15,63 +15,26 @@
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
+    <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Firebase UI CSS -->
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" href="styles/style.css">
-    <!-- Firebase UI CSS -->
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-
-    <style>
-        a {
-            text-decoration: none;
-            color: white;
-        }
-
-        .navbar-brand {
-            color: white;
-        }
-
-        input.findgym {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .shortcut {
-            text-align: justify;
-            -ms-text-justify: distribute-all-lines;
-            text-justify: distribute-all-lines;
-            display: inline-block;
-            *display: inline;
-        }
-
-        .stretch {
-            width: 100%;
-            display: inline-block;
-            font-size: 0;
-            line-height: 0
-        }
-    </style>
-
+    <link rel="stylesheet" href="style/index.css">
 </head>
 
 <body>
-
-
     <!------------------->
     <!--  HTML Section -->
     <!------------------->
 
-
     <!--Navigation Bar-->
     <nav class="navbar navbar-dark bg-dark py-3">
-        <a class="navbar-brand" href="main.html">
+        <a class="navbar-brand" href="index.html">
             <h1>GymFinder</h1>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -88,7 +51,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="editprofile.html">Edit Profile</a>
+                    <a class="nav-link" href="login.html">Login/Signup</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="settings.html">Settings</a>
@@ -98,48 +61,49 @@
     </nav>
 
     <!--FIND A GYM BUTTON-->
-    <a href="results.html">
-        <input class="findgym" type="image" src="images/find-a-gym.png">
-    </a>
-     <!-- Postal code btn -->
-     <form style="text-align: center;" id="addPostalCode">
-        <label>Postal Code:</label>
-        <input type="text" id="pCode" name="postalCode">
-        <input type="submit" value="Submit" onclick="submitPostalCode()">
-    </form>
+        <a id="findGymButton" href="results.html">
+            <img id="findGymImg" class="findgym" type="image" src="images/find-a-gym.png">
+        </a>
+        <!-- Postal code btn -->
+        <form style="text-align: center;" id="addPostalCode">
+            <label>Postal Code:</label>
+            <input type="text" id="pCode" name="postalCode">
+            <input type="submit" value="Submit" onclick="submitPostalCode()">
+        </form>
 
-    <!--SHORTCUT BAR/FOOTER-->
-    <div class="footer fixed-bottom center"
-        style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
-        <a href="main.html" class="shortcut py-3 px-3">
-            <div>
-                Home
-            </div>
-        </a>
-        <a href="results.html" class="shortcut py-3 px-3">
-            <div>
-                Find a Gym
-            </div>
-        </a>
-        <a href="#" class="shortcut py-3 px-3">
-            <div>
-                Points
-            </div>
-        </a>
-        <a href="profile.html" class="shortcut py-3 px-3">
-            <div>
-                Fitness Profile
-            </div>
-        </a>
-        
 
-    </div>
+        <!--SHORTCUT BAR/FOOTER-->
+        <div class="footer fixed-bottom center"
+            style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
+            <a href="index.html" class="shortcut py-3 px-3">
+                <div>
+                    Home
+                </div>
+            </a>
+            <a href="results.html" class="shortcut py-3 px-3">
+                <div>
+                    Find a Gym
+                </div>
+            </a>
+            <a href="login.html" class="shortcut py-3 px-3">
+                <div>
+                    Points
+                </div>
+            </a>
+            <a href="login.html" class="shortcut py-3 px-3">
+                <div>
+                    Fitness Profile
+                </div>
+            </a>
+        </div>
+
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->
     <!----------------------------------------------->
-        <!-- Required Boostrap JS files -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+
+    <!-- Required Boostrap JS files -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -158,12 +122,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
 
-
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
     <script src="scripts/index.js"></script>
-
 </body>
 
 </html>
