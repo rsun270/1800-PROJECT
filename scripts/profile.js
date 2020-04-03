@@ -2,9 +2,8 @@ initApp = function () {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
-
       updateNavBar();
-
+      getPostalCode(user);
       let displayName = user.displayName;
       let email = user.email;
       document.getElementById("user_name").innerHTML = displayName;
@@ -44,7 +43,7 @@ function setPostalCode(code) {
 
 /** when Change button is clicked, the user's postal code is updated to what was entered in the textfield */
 function setPostalCode() {
-  let code = document.getElementById("code").value // get postal code from DOM
+  let code = document.getElementById("code").value; // get postal code from DOM
 
   let user = firebase.auth().currentUser;
 
@@ -57,5 +56,9 @@ function setPostalCode() {
 /** MAIN */
 let postalCode = document.getElementById("postalcode");
 
-// TODO:
-postalCode.innerHTML = "user's postal code from the db";
+// Listens for changes in user doc and updates postal code when triggered
+function getPostalCode(user) {
+  db.collection("users").doc(user.uid).onSnapshot(function(userDoc) {
+    postalCode.innerHTML = userDoc.data()["postal code"];
+});
+}

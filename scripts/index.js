@@ -4,21 +4,24 @@ let userRef;
 
 
 initApp = function () {
+    disableFindButton();
+    document.getElementById("findGymButton").style.visibility = "visible";
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             console.log("I am logged in!");
             userRef = db.collection("users").doc(user.uid);
             userRef.get().then(function (userDoc) {
-                console.log(userDoc.data()["postal code"]);
+                console.log("Signed in user's postal code: " + userDoc.data()["postal code"]);
                 if (userDoc.data()["postal code"] == undefined) {
                     disableFindButton();
                     alert("Set a postal code.");
+                } else {
+                    enableFindButton();
                 }
             });
             loggedIn = true;
             console.log(firebase.auth().currentUser);
-
         } else {
             // No user is signed in.
             console.log("I am not logged in!");

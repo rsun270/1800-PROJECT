@@ -3,11 +3,11 @@
 //======================//
 let dbRef = db.collection("gyms");
 // EXECUTION START
-checkFilters();
-if(localStorage.getItem("filterList").length < 1){
-  sortDistancesArray();
-}
-// setTimeout(sortByDistance, 9000);
+// checkFilters();
+// if(localStorage.getItem("filterList").length < 1){
+//   prepDistancesArray();
+// }
+prepDistancesArray();
 if (localStorage.getItem("filterList") == undefined) {
   localStorage.setItem("filterList", []);
 }
@@ -18,7 +18,7 @@ if (localStorage.getItem("filterList") == undefined) {
 
 
 let userPostalCode;
-let userLatLong;
+// let userLatLong;
 let distances = []; // array to store gym distances in
 let idCounter = 0;
 let distanceCardArray = [];
@@ -73,20 +73,20 @@ function sortByPrice() {
 
 }
 
-function checkFilters() {
-  if (localStorage.getItem("filterList").length > 0) {
-    let filterListArray = JSON.parse(localStorage.getItem("filterList"));
-        dbRef.get().then(function (doc) {
-        doc.forEach(function (doc1) {
-        // console.log(filterListArray);
-        // console.log(doc1.id, doc1.data().Filters);
-        compareArray(filterListArray, doc1.data().Filters, doc1.id);
-      });
-    console.log(gymList);
-    displayCards(doc);
-    });
-  }
-}
+// function checkFilters() {
+//   if (localStorage.getItem("filterList").length > 0) {
+//     let filterListArray = JSON.parse(localStorage.getItem("filterList"));
+//         dbRef.get().then(function (doc) {
+//         doc.forEach(function (doc1) {
+//         // console.log(filterListArray);
+//         // console.log(doc1.id, doc1.data().Filters);
+//         compareArray(filterListArray, doc1.data().Filters, doc1.id);
+//       });
+//     console.log(gymList);
+//     displayCards(doc);
+//     });
+//   }
+// }
 
 
 function compareArray(arr1, arr2, arr2ID) {
@@ -242,9 +242,10 @@ function getLatLongFromPostal(postalCode, callback) {
 
 // Fills the distances array with objects storing gymid: value and distance: value pairs
 function getDistances(pushToDistances) {
+  let userLatLong;
   getLatLongFromPostal(userPostalCode, function (data) {
     userLatLong = data;
-    // console.log("User lat/long: " + userLatLong);
+    console.log("User lat/long: " + userLatLong);
   });
   let i = 0;
   db.collection("gyms").get().then(function (snap) {
@@ -253,10 +254,10 @@ function getDistances(pushToDistances) {
       let gymLatLong;
       getLatLongFromPostal(gymPostalCode, function (data) {
         gymLatLong = data;
-        // console.log("Gym lat/long: " + gymLatLong);
+        console.log("Gym lat/long: " + gymLatLong);
         pushToDistances(userLatLong, gymLatLong, doc);
         i++;
-        if (i == 9) {
+        if (i == 10) {
           // DISTANCES ARRAY HAS BEEN CREATED, CAN PROCEED WITH ANY FUNCTIONS THAT NEED DISTANCE
           console.log("Distances array created: ");
           console.log(distances);
@@ -285,18 +286,6 @@ function degToRad(deg) {
   return deg * Math.PI / 180;
 }
 
-// Comparison logic for sort() function
-function compare(a, b) {
-  if (a["distance"] > b["distance"]) {
-    return 1;
-  }
-  if (a["distance"] < b["distance"]) {
-    return -1;
-  }
-  return 0;
-}
-
-
 /** Updates the NavBar based on whether user is logged in or not */
 function updateNavBar() {
     let profile = document.getElementById("profile");
@@ -310,15 +299,13 @@ function updateNavBar() {
     document.getElementById("index_link").onclick = homeClick;
 }
 
-// Sorts the distances array from closest to furthest away from the user
-function sortDistancesArray() {
+// Prepares the distances array with a user postal code then executes getDistances()
+function prepDistancesArray() {
   // Get user postal code from db or local storage based on sign in status
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
-
       updateNavBar();
-
       db.collection("users").doc(user.uid)
         .get().then(function (snap) {
           userPostalCode = snap.data()["postal code"]; //get postal code of a user
@@ -340,7 +327,6 @@ function sortDistancesArray() {
           gym_id: doc.id,
           distance: d
         });
-        // distances.sort(compare);
       });
     }
   })
