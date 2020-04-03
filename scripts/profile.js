@@ -13,7 +13,7 @@ initApp = function () {
       userRef.on('value', function (snapshot) {
         document.write(snapshot.val());
       });
-      document.getElementById("user_postal_code").innerHTML = "Set your postal code.";
+      //document.getElementById("postalcode").innerHTML = "Set your postal code.";
     } else {
       // No user is signed in.
       document.getElementById("settings_container").style.display = "none";
@@ -35,38 +35,27 @@ function updateNavBar() {
 
 /** updates user postal code to database */
 function setPostalCode(code) {
-    firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("users").doc(user.uid).update({
-            "postal code": code
-        });
-    })
+  firebase.auth().onAuthStateChanged(function (user) {
+    db.collection("users").doc(user.uid).update({
+      "postal code": code
+    });
+  })
 }
 
+/** when Change button is clicked, the user's postal code is updated to what was entered in the textfield */
+function setPostalCode() {
+  let code = document.getElementById("code").value // get postal code from DOM
 
-// remove
-function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
+  let user = firebase.auth().currentUser;
+
+  db.collection("users").doc(user.uid).update({
+    "postal code": code
   });
+  alert("Your postal code has been updated.")
 }
-
-/** handles submit button click */
-function clickHandler(event) {
-  log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
-  event.preventDefault();
-}
-
-const form = document.getElementById('text');
-const log = document.getElementById('log');
-form.addEventListener('submit', logSubmit);
-
 
 /** MAIN */
-let postalCode = document.getElementById("postalcode")
-postalCode.innerHTML = localStorage.getItem("postalCodeLocal");
-document.getElementById("changecode").onclick = setPostalCode(postalCode);
+let postalCode = document.getElementById("postalcode");
 
-
-
+// TODO:
+postalCode.innerHTML = "user's postal code from the db";
