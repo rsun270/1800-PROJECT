@@ -2,16 +2,20 @@ const form = document.querySelector('#addPostalCode');
 let loggedIn = false;
 let userRef;
 
+
 initApp = function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
             console.log("I am logged in!");
             userRef = db.collection("users").doc(user.uid);
-            if (userRef["postal code"] == undefined) {
-                disableFindButton();
-                alert("Set a postal code.");
-            }
+            userRef.get().then(function (userDoc) {
+                console.log(userDoc.data()["postal code"]);
+                if (userDoc.data()["postal code"] == undefined) {
+                    disableFindButton();
+                    alert("Set a postal code.");
+                }
+            });
             loggedIn = true;
             console.log(firebase.auth().currentUser);
 
@@ -43,7 +47,8 @@ function submitPostalCode() {
         // }, { merge: true });
         // return setWithMerge;
 
-        userRef.set({ "postal code" : currentPostalCode}, { merge: true });
+        userRef.set(
+            { "postal code" : currentPostalCode}, { merge: true });
         enableFindButton();
         alert("Your postal code, " + currentPostalCode + ", has been saved to your account.");
 

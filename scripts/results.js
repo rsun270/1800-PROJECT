@@ -4,7 +4,9 @@
 let dbRef = db.collection("gyms");
 // EXECUTION START
 checkFilters();
-sortDistancesArray();
+if(localStorage.getItem("filterList").length < 1){
+  sortDistancesArray();
+}
 // setTimeout(sortByDistance, 9000);
 if (localStorage.getItem("filterList") == undefined) {
   localStorage.setItem("filterList", []);
@@ -20,6 +22,7 @@ let userLatLong;
 let distances = []; // array to store gym distances in
 let idCounter = 0;
 let distanceCardArray = [];
+let gymList = [];
 
 //======================//
 // HTML DOM Elements    //
@@ -79,34 +82,42 @@ function checkFilters() {
         doc.forEach(function (doc1) {
         // console.log(filterListArray);
         // console.log(doc1.id, doc1.data().Filters);
-        compareArray(filterListArray, doc1.data().Filters, doc1.data().id);
+        compareArray(filterListArray, doc1.data().Filters, doc1.id);
       });
+    console.log(gymList);
+    displayCards(doc);
     });
   }
 }
+
 
 function compareArray(arr1, arr2, arr2ID) {
   let counter = 0;
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr2.length; j++) {
       if (arr1[i] == arr2[j]) {
-        console.log("Counter before = " + counter);
         counter++;
-        console.log("Counter after = " + counter);
       }
     }
   }
   if (counter == arr1.length) {
-    filteredArr.push(arr2);
+     gymList.push(arr2ID);
   }
-  console.log(filteredArr)
 }
 
 /** displays the cards */
 function displayCards(CardObjects) { //takes in collection
-  CardObjects.forEach(function (doc) { //cycle thru collection
-    createOneCard(doc); //create card for one recipe/gym
-  })
+  if(localStorage.getItem("filterList").length < 1){
+    CardObjects.forEach(function (doc) { //cycle thru collection
+      createOneCard(doc); //create card for one recipe/gym
+    })
+  }else{
+    CardObjects.forEach(function (doc) { //cycle thru collection
+      if(gymList.includes(doc.id)){
+        createOneCard(doc); //create card for one recipe/gym
+      }
+    })
+  }
 }
 
 
