@@ -38,7 +38,7 @@
 
     <!--Navigation Bar-->
     <nav class="navbar sticky-top navbar-dark bg-dark py-3">
-        <a id="index_link" class="navbar-brand" href="index.html">
+        <a id="index_link" class="navbar-brand" href="main.html">
             <h1>GymFinder</h1>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -47,13 +47,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <div class="topnav">
-                            <input type="text" placeholder="Current Location...">
-                        </div><span class="sr-only">(current)</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="profile.html">Profile</a>
                 </li>
@@ -64,14 +57,18 @@
         </div>
     </nav>
 
-    <!-- SETTINGS -->
+    <!-- PROFILE INFO -->
     <div id="settings_container" class="container-fluid">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <p class="settings_heading">Postal Code</p>
-                <button type="button" class="btn btn-primary settings_change_button" onclick="exampleFunction()">Change Postal Code</button>
-                <p id="user_postal_code" class="settings_item_content">
-                </p>
+                <p class="settings_heading">Postal Code</p><br>
+                <form>
+                    <p id="postalcode" class="settings_item_content"></p>
+                     <!--Textbox-->
+                    <input type="text" id="postal code" value="">
+                     <!--Button-->
+                    <input type="submit" value="Change Postal Code">
+                  </form>
             </li>
             <li class="list-group-item">
                 <p class="settings_heading">Email Address</p>

@@ -43,24 +43,23 @@ let gymList = [];
 function sortByDistance(distance) {
   document.getElementById("cards").innerHTML = '';
   // distances contains an array with an object for each gym containing a gym_id: value and distance: value
-  dbRef.get().then(function (snap) {
-    // Display a card for each document in the array
-    displayCards(snap);
-    let gymCardsList = Array.prototype.slice.call(document.getElementsByClassName("gymCard"));
-    // console.log(gymCardsList.length);
-    for (let i = 0; i < gymCardsList.length; i++) {
-      gymCardsList[i] = gymCardsList[i].id;
-    }
-    // console.log(gymCardsList);
-    gymCardsList.sort(function (a, b) {
-      return a - b;
-    });
-    for (let i = 0; i < gymCardsList.length; i++) {
-      let card = document.getElementById(gymCardsList[i]);
-      document.getElementById("cards").appendChild(card); //stick it in the div
-    }
-  })
-
+    dbRef.get().then(function (snap) {
+      // Display a card for each document in the array
+      displayCards(snap);
+      let gymCardsList = Array.prototype.slice.call(document.getElementsByClassName("gymCard"));
+      // console.log(gymCardsList.length);
+      for (let i = 0; i < gymCardsList.length; i++) {
+        gymCardsList[i] = gymCardsList[i].id;
+      }
+      // console.log(gymCardsList);
+      gymCardsList.sort(function(a, b) {
+        return a - b;
+      });
+      for (let i = 0; i < gymCardsList.length; i++) {
+        let card = document.getElementById(gymCardsList[i]);
+        document.getElementById("cards").appendChild(card); //stick it in the div
+      }
+    })
 }
 
 /** Sorts list by price (lowest to highest) */
@@ -258,7 +257,7 @@ function getDistances(pushToDistances) {
         pushToDistances(userLatLong, gymLatLong, doc);
         i++;
         if (i == 9) {
-          // The distances array is created at this point, can proceed
+          // DISTANCES ARRAY HAS BEEN CREATED, CAN PROCEED WITH ANY FUNCTIONS THAT NEED DISTANCE
           console.log("Distances array created: ");
           console.log(distances);
           sortByDistance();

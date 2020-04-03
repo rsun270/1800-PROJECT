@@ -100,3 +100,4 @@ function generateMap(c) {
 // Main                 //
 //======================//
 grabGymById(gymID);
+

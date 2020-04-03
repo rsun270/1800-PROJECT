@@ -43,13 +43,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <div class="topnav">
-                            <input type="text" placeholder="Current Location...">
-                        </div><span class="sr-only">(current)</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.html">Login/Signup</a>
                 </li>
@@ -58,10 +51,8 @@
     </nav>
 
     <!--FIND A GYM BUTTON-->
-    <div>
-        <input type="text" class="findgym">
-        <a href="results.html">
-            <input class="findgym" type="image" src="images/find-a-gym.png">
+        <a id="findGymButton" href="results.html">
+            <img id="findGymImg" class="findgym" type="image" src="images/find-a-gym.png">
         </a>
         <!-- Postal code btn -->
         <form style="text-align: center;" id="addPostalCode">
@@ -94,10 +85,13 @@
                     Profile
                 </div>
             </a>
+        </div>
+
 
     <!----------------------------------------------->
-    <!-- JS: Bootstrap, Firebase, other API's    -->
+    <!-- JS: Boostrap, Firebase, other API's    -->
     <!----------------------------------------------->
+
     <!-- Required Boostrap JS files -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -114,16 +108,13 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
     <script src="scripts/firebase_api.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <!-- Google Maps API -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWLNBdT0HsvpDLqGjV5pqBONvtCIiM4p8"
-    type="text/javascript"></script>
     <script src="scripts/index.js"></script>
 </body>
 
