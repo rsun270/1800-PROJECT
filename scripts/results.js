@@ -5,7 +5,6 @@ let dbRef = db.collection("gyms");
 // EXECUTION START
 // checkFilters();
 sortDistancesArray();
-// setTimeout(sortByDistance, 9000);
 if (localStorage.getItem("filterList") == undefined) {
   localStorage.setItem("filterList", []);
 }
