@@ -3,7 +3,7 @@
 //======================//
 let dbRef = db.collection("gyms");
 // EXECUTION START
-checkFilters();
+// checkFilters();
 sortDistancesArray();
 // setTimeout(sortByDistance, 9000);
 if (localStorage.getItem("filterList") == undefined) {
