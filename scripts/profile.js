@@ -13,7 +13,7 @@ initApp = function () {
       userRef.on('value', function (snapshot) {
         document.write(snapshot.val());
       });
-      document.getElementById("postalcode").innerHTML = "Set your postal code.";
+      //document.getElementById("postalcode").innerHTML = "Set your postal code.";
     } else {
       // No user is signed in.
       document.getElementById("settings_container").style.display = "none";
@@ -56,5 +56,6 @@ function setPostalCode() {
 
 /** MAIN */
 let postalCode = document.getElementById("postalcode");
+
 // TODO:
-postalCode.innerHTML = "user's postal code in the db";
+postalCode.innerHTML = "user's postal code from the db";
