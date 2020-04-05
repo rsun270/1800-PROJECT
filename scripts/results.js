@@ -2,23 +2,11 @@
 // Constants            //
 //======================//
 let dbRef = db.collection("gyms");
-// EXECUTION START
-// checkFilters();
-if(localStorage.getItem("filterList") && localStorage.getItem("filterList").length < 1){
-  prepDistancesArray();
-}
-prepDistancesArray();
-if (localStorage.getItem("filterList") == undefined) {
-  localStorage.setItem("filterList", []);
-}
 
 //======================//
 // Global Variables     //
 //======================//
-
-
 let userPostalCode;
-// let userLatLong;
 let distances = []; // array to store gym distances in
 let idCounter = 0;
 let distanceCardArray = [];
@@ -41,6 +29,7 @@ let gymList = [];
 
 /** Sorts list by distance (closest to farthest) */
 function sortByDistance(distance) {
+  localStorage.setItem("filterList", "");
   document.getElementById("cards").innerHTML = '';
   // distances contains an array with an object for each gym containing a gym_id: value and distance: value
     dbRef.get().then(function (snap) {
@@ -64,6 +53,7 @@ function sortByDistance(distance) {
 
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
+  localStorage.setItem("filterList", "");
   document.getElementById("cards").innerHTML = '';
   dbRef.orderBy("price")
     .get()
@@ -74,18 +64,17 @@ function sortByPrice() {
 }
 
 function checkFilters() {
-  if (localStorage.getItem("filterList") && localStorage.getItem("filterList").length > 0) {
+    // console.log(typeof localStorage.getItem("filterList"));
     let filterListArray = JSON.parse(localStorage.getItem("filterList"));
-        dbRef.get().then(function (doc) {
-        doc.forEach(function (doc1) {
-        // console.log(filterListArray);
+    // console.log(filterListArray);
+        dbRef.get().then(function (snap) {
+        snap.forEach(function (doc1) {
         // console.log(doc1.id, doc1.data().Filters);
         compareArray(filterListArray, doc1.data().Filters, doc1.id);
       });
     console.log(gymList);
-    displayCards(doc);
+    displayCards(snap);
     });
-  }
 }
 
 
@@ -105,8 +94,7 @@ function compareArray(arr1, arr2, arr2ID) {
 
 /** displays the cards */
 function displayCards(CardObjects) { //takes in collection
-  if (localStorage.getItem("filterList")) {
-    if(localStorage.getItem("filterList").length > 0){
+    if(localStorage.getItem("filterList").length == 0){
       CardObjects.forEach(function (doc) { //cycle thru collection
         createOneCard(doc); //create card for one recipe/gym
       })
@@ -117,9 +105,8 @@ function displayCards(CardObjects) { //takes in collection
         }
       })
     }
-  }
+  
 }
-
 
 // Creates a gym card 
 function createOneCard(c) {
@@ -261,7 +248,17 @@ function getDistances(pushToDistances) {
           // DISTANCES ARRAY HAS BEEN CREATED, CAN PROCEED WITH ANY FUNCTIONS THAT NEED DISTANCE
           console.log("Distances array created: ");
           console.log(distances);
-          sortByDistance();
+          if (localStorage.getItem("filterList") === null) {
+            localStorage.setItem("filterList", "");
+          }
+          if (localStorage.getItem("filterList").length > 0) {
+            checkFilters();
+            let appliedFilters = JSON.parse(localStorage.getItem("filtersList"));
+            console.log(appliedFilters);
+            document.getElementById("filters_applied").innerHTML = appliedFilters;
+          } else {
+            sortByDistance();
+          }
         }
       });
     });
@@ -330,5 +327,7 @@ function prepDistancesArray() {
       });
     }
   })
-
 }
+
+// EXECUTION START
+prepDistancesArray();
