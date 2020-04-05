@@ -4,9 +4,9 @@
 let dbRef = db.collection("gyms");
 // EXECUTION START
 // checkFilters();
-// if(localStorage.getItem("filterList").length < 1){
-//   prepDistancesArray();
-// }
+if(localStorage.getItem("filterList") && localStorage.getItem("filterList").length < 1){
+  prepDistancesArray();
+}
 prepDistancesArray();
 if (localStorage.getItem("filterList") == undefined) {
   localStorage.setItem("filterList", []);
@@ -73,20 +73,20 @@ function sortByPrice() {
 
 }
 
-// function checkFilters() {
-//   if (localStorage.getItem("filterList").length > 0) {
-//     let filterListArray = JSON.parse(localStorage.getItem("filterList"));
-//         dbRef.get().then(function (doc) {
-//         doc.forEach(function (doc1) {
-//         // console.log(filterListArray);
-//         // console.log(doc1.id, doc1.data().Filters);
-//         compareArray(filterListArray, doc1.data().Filters, doc1.id);
-//       });
-//     console.log(gymList);
-//     displayCards(doc);
-//     });
-//   }
-// }
+function checkFilters() {
+  if (localStorage.getItem("filterList") && localStorage.getItem("filterList").length > 0) {
+    let filterListArray = JSON.parse(localStorage.getItem("filterList"));
+        dbRef.get().then(function (doc) {
+        doc.forEach(function (doc1) {
+        // console.log(filterListArray);
+        // console.log(doc1.id, doc1.data().Filters);
+        compareArray(filterListArray, doc1.data().Filters, doc1.id);
+      });
+    console.log(gymList);
+    displayCards(doc);
+    });
+  }
+}
 
 
 function compareArray(arr1, arr2, arr2ID) {
