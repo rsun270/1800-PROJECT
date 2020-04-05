@@ -79,3 +79,14 @@ h3 {
 #index_link {
     cursor: pointer;
 }
+
+#filters_applied_parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#filters_applied {
+    margin-left: 10px;
+    margin-right: 10px;
+}

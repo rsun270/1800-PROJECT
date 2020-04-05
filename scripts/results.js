@@ -63,6 +63,7 @@ function sortByPrice() {
 
 }
 
+// Applys filters and displays results
 function checkFilters() {
     // console.log(typeof localStorage.getItem("filterList"));
     let filterListArray = JSON.parse(localStorage.getItem("filterList"));
@@ -253,7 +254,7 @@ function getDistances(pushToDistances) {
           }
           if (localStorage.getItem("filterList").length > 0) {
             checkFilters();
-            let appliedFilters = JSON.parse(localStorage.getItem("filtersList"));
+            let appliedFilters = JSON.parse(localStorage.getItem("filterList"));
             console.log(appliedFilters);
             document.getElementById("filters_applied").innerHTML = appliedFilters;
           } else {
