@@ -87,6 +87,7 @@ h3 {
 }
 
 #filters_applied {
+    margin: 0;
     margin-left: 10px;
     margin-right: 10px;
 }

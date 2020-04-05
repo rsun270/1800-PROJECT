@@ -256,7 +256,7 @@ function getDistances(pushToDistances) {
             checkFilters();
             let appliedFilters = JSON.parse(localStorage.getItem("filterList"));
             console.log(appliedFilters);
-            document.getElementById("filters_applied").innerHTML = appliedFilters;
+            document.getElementById("filters_applied").innerHTML = "Filters applied: " + appliedFilters;
           } else {
             sortByDistance();
           }
