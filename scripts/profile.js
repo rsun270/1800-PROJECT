@@ -6,8 +6,10 @@ initApp = function () {
       getPostalCode(user);
       let displayName = user.displayName;
       let email = user.email;
+
       document.getElementById("user_name").innerHTML = displayName;
       document.getElementById("user_email_address").innerHTML = email;
+
       let userRef = firebase.database().ref('users/' + user.uid + '/name');
       userRef.on('value', function (snapshot) {
         document.write(snapshot.val());
