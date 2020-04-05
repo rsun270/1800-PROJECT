@@ -77,8 +77,6 @@ function createOneCard(c) {
 
   var map = document.createElement("div");
 
-
-
   // stitch it all together 
   cardbodydiv.appendChild(name);
   //cardbodydiv.appendChild(distance);
