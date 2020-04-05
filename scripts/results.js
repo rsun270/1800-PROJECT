@@ -3,7 +3,7 @@
 //======================//
 let dbRef = db.collection("gyms");
 // EXECUTION START
-// checkFilters();
+checkFilters();
 if(localStorage.getItem("filterList") && localStorage.getItem("filterList").length < 1){
   prepDistancesArray();
 }
@@ -15,7 +15,6 @@ if (localStorage.getItem("filterList") == undefined) {
 //======================//
 // Global Variables     //
 //======================//
-
 
 let userPostalCode;
 // let userLatLong;
@@ -70,8 +69,9 @@ function sortByPrice() {
     .then(function (snap) {
       displayCards(snap);
     });
-
 }
+
+
 
 function checkFilters() {
   if (localStorage.getItem("filterList") && localStorage.getItem("filterList").length > 0) {
@@ -87,6 +87,7 @@ function checkFilters() {
     });
   }
 }
+
 
 
 function compareArray(arr1, arr2, arr2ID) {
