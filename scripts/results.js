@@ -105,8 +105,8 @@ function compareArray(arr1, arr2, arr2ID) {
 
 /** displays the cards */
 function displayCards(CardObjects) { //takes in collection
-  if (localStorage.getItem("filterList") != null) {
-    if(localStorage.getItem("filterList").length < 1){
+  if (localStorage.getItem("filterList")) {
+    if(localStorage.getItem("filterList").length > 0){
       CardObjects.forEach(function (doc) { //cycle thru collection
         createOneCard(doc); //create card for one recipe/gym
       })
