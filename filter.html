@@ -85,21 +85,7 @@
 
     </div>
 
-    <a href="results.html">
-        <img src="images/back.jpg" alt="Return to previous page" id="back" width="100px" height="100px"
-            style="float:left"><br><br>
-    </a>
-    <h1 if="filterList">Filters:</h1>
-    <div class="centeredButtons">
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off" name='selection'> Price
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" autocomplete="off" name='selection'> Distance
-            </label>
-        </div>
-    </div><br><br>
+    <br><br>
     <h1>Amenities:</h1>
     <div class="centeredButtons">
         <div class="btn-group-toggle" data-toggle="buttons">
@@ -128,89 +114,10 @@
     </div><br>
     <div class="centeredButtons">
         <a href="results.html">
-            <button class="buttons" id="button" type="button" onclick="addFilterList()">Search now!</button>
+            <button type="button" id="button" class="btn btn-primary btn-lg" onclick="addFilterList()">Search Now!</button>
         </a>
     </div>
-    <script>
-        var favorite = [];
-        var poolCheck = document.getElementById("pool");
-        var femaleOnlyCheck = document.getElementById("Female-Only");
-        var freeParkingCheck = document.getElementById("Free_parking");
-        var hoursCheck = document.getElementById("24/7");
-        var trainersCheck = document.getElementById("Trainers");
-        var multipleLocationCheck = document.getElementById("Multiple_locations");
-
-        function addFilterList(){
-            localStorage.setItem("filterList",JSON.stringify(favorite));
-        }
-
-        function checkPool() {
-            if (poolCheck.checked && !favorite.includes('Pool')) {
-                favorite.push(poolCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == poolCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkFemaleOnly() {
-            if (femaleOnlyCheck.checked && !favorite.includes('Female-Only')) {
-                favorite.push(femaleOnlyCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == femaleOnlyCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkFreeParking() {
-            if (freeParkingCheck.checked && !favorite.includes('Free parking')) {
-                favorite.push(freeParkingCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == freeParkingCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkHours() {
-            if (hoursCheck.checked && !favorite.includes('24/7')) {
-                favorite.push(hoursCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == hoursCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkTrainers() {
-            if (trainersCheck.checked && !favorite.includes('Trainers')) {
-                favorite.push(trainersCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == trainersCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkMultipleLocations() {
-            if (multipleLocationCheck.checked && !favorite.includes('Multiple locations')) {
-                favorite.push(multipleLocationCheck.value);;
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == multipleLocationCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="scripts/filters.js"></script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->

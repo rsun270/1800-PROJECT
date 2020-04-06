@@ -29,8 +29,8 @@ let gymList = [];
 
 /** Sorts list by distance (closest to farthest) */
 function sortByDistance(distance) {
-  localStorage.setItem("filterList", "");
   document.getElementById("cards").innerHTML = '';
+  removeFilters();
   // distances contains an array with an object for each gym containing a gym_id: value and distance: value
     dbRef.get().then(function (snap) {
       // Display a card for each document in the array
@@ -53,13 +53,26 @@ function sortByDistance(distance) {
 
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
-  localStorage.setItem("filterList", "");
   document.getElementById("cards").innerHTML = '';
+  removeFilters();
   dbRef.orderBy("price")
     .get()
     .then(function (snap) {
       displayCards(snap);
     });
+
+}
+
+//remove filters
+function removeFilters(){
+  if(localStorage.getItem("filterList")==""){
+    localStorage.setItem("filterList", "");
+    document.getElementById("filters_applied").innerHTML = "No filters being applied";
+  }else{
+    localStorage.setItem("filterList", "");
+    document.getElementById("filters_applied").innerHTML = "No filters being applied";
+    sortByPrice();
+  }
 
 }
 
@@ -163,6 +176,12 @@ function createOneCard(c) {
   var text = document.createTextNode("Occupancy: " + c.data().occupancy);
   occupancy.appendChild(text);
 
+  // the Amenities
+  var gymAttribute = document.createElement("p");
+  gymAttribute.setAttribute("class", "card-text");
+  var text = document.createTextNode("Amenities: " + c.data().Filters);
+  gymAttribute.appendChild(text);
+
   // VIEW GYM button
   var a = document.createElement("input");
   a.type = "button"
@@ -180,6 +199,7 @@ function createOneCard(c) {
   cardbodydiv.appendChild(address);
   cardbodydiv.appendChild(price);
   cardbodydiv.appendChild(occupancy);
+  cardbodydiv.appendChild(gymAttribute);
   cardbodydiv.appendChild(a);
   carddiv.appendChild(cardbodydiv);
   coldiv.appendChild(carddiv);
