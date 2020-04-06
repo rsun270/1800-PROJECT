@@ -232,10 +232,11 @@ function getLatLongFromPostal(postalCode, callback) {
 function getDistances(pushToDistances) {
   let userLatLong;
   getLatLongFromPostal(userPostalCode, function (data) {
+    // This is executed once getLatLongFromPostal() gets results back from geocode()
     userLatLong = data;
     console.log("User lat/long: " + userLatLong);
-  });
-  let i = 0;
+    // Now get gym lat long because pushToDistances() requires userLatLong to have value
+    let i = 0;
   db.collection("gyms").get().then(function (snap) {
     snap.forEach(function (doc) { //cycle thru collection of all gyms
       let gymPostalCode = doc.data()["postal code"]; //get postal code of a gym
@@ -243,6 +244,7 @@ function getDistances(pushToDistances) {
       getLatLongFromPostal(gymPostalCode, function (data) {
         gymLatLong = data;
         console.log("Gym lat/long: " + gymLatLong);
+        
         pushToDistances(userLatLong, gymLatLong, doc);
         i++;
         if (i == 10) {
@@ -264,6 +266,8 @@ function getDistances(pushToDistances) {
       });
     });
   });
+  });
+  
 }
 
 // Calculates the distance between two long/lat coordinates
