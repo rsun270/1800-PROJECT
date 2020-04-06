@@ -2,56 +2,21 @@
 <html>
 
 <head>
-    <style>
-        h1 {
-            text-align: center;
-        }
-
-        .buttons {
-            padding: 15px 32px;
-            text-align: center;
-            font-size: 20px;
-            margin: 20px;
-            vertical-align: center;
-        }
-
-        .centeredButtons {
-            text-align: center;
-        }
-
-        #back {
-            position: absolute;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-        }
-
-        .navbar-brand {
-            color: white;
-        }
-
-        input.findgym {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .shortcut {
-            text-align: justify;
-            -ms-text-justify: distribute-all-lines;
-            text-justify: distribute-all-lines;
-            display: inline-block;
-            *display: inline;
-        }
-    </style>
     <meta charset="utf-8">
     <title>Gym finder</title>
     <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
+
+    <!----------------------------------------------->
+    <!--  Meta tag for rendering on mobile devices -->
+    <!----------------------------------------------->
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!----------------------------------------------->
+    <!-- CSS: Bootstrap, Firebase, other API -->
+    <!----------------------------------------------->
+    <!-- Boostrap CSS -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
@@ -61,10 +26,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-
+    <!------------------------>
+    <!-- Your own CSS files -->
+    <!------------------------>
+    <link rel="stylesheet" href="style/filter.css">
 </head>
 
 <body>
+    <!------------------->
+    <!--  HTML Section -->
+    <!------------------->
+
     <!--Navigation Bar-->
     <nav class="navbar navbar-dark bg-dark py-3">
         <a class="navbar-brand" href="index.html">
@@ -76,13 +48,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <div class="topnav">
-                            <input type="text" placeholder="Current Location...">
-                        </div><span class="sr-only">(current)</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Edit Profile</a>
                 </li>
@@ -97,23 +62,23 @@
     <div class="footer fixed-bottom center"
         style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
         <a href="index.html" class="shortcut py-3 px-3">
-            <div>
+            <div style="color:white;">
                 Home
             </div>
         </a>
         <a href="results.html" class="shortcut py-3 px-3">
-            <div>
+            <div style="color:white;">
                 Find a Gym
             </div>
         </a>
         <a href="#" class="shortcut py-3 px-3">
-            <div>
+            <div style="color:white;">
                 Points
             </div>
         </a>
         <a href="#" class="shortcut py-3 px-3">
-            <div>
-                Fitness Profile
+            <div style="color:white;">
+                Profile
             </div>
         </a>
 
@@ -127,9 +92,6 @@
     <h1 if="filterList">Filters:</h1>
     <div class="centeredButtons">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" autocomplete="off" name='selection'> Rating
-            </label>
             <label class="btn btn-secondary">
                 <input type="radio" name="options" id="option2" autocomplete="off" name='selection'> Price
             </label>
@@ -142,40 +104,112 @@
     <div class="centeredButtons">
         <div class="btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Pool"> Pool
+                <input onclick="checkPool()" id="pool" type="checkbox" autocomplete="off" name='selection' value="Pool"> Pool
             </label>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Female-Only"> Female-Only
+                <input onclick="checkFemaleOnly()"id="Female-Only" type="checkbox" autocomplete="off" name='selection' value="Female-Only">
+                Female-Only
             </label>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Free parking"> Free parking
+                <input onclick="checkFreeParking()"id="Free_parking" type="checkbox" autocomplete="off" name='selection' value="Free parking"> Free
+                parking
             </label><br><br>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="24/7"> 24/7
+                <input onclick="checkHours()"id="24/7" type="checkbox" autocomplete="off" name='selection' value="24/7"> 24/7
             </label>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Trainers"> Trainers
+                <input onclick="checkTrainers()"id="Trainers" type="checkbox" autocomplete="off" name='selection' value="Trainers"> Trainers
             </label>
             <label class="btn btn-secondary active">
-                <input type="checkbox" autocomplete="off" name='selection' value="Multiple locations"> Multiple locations
+                <input onclick="checkMultipleLocations()"id="Multiple_locations" type="checkbox" autocomplete="off" name='selection'
+                    value="Multiple locations"> Multiple locations
             </label>
         </div>
     </div><br>
     <div class="centeredButtons">
         <a href="results.html">
-            <button class="buttons" id="button" type="button">Search now!</button>
+            <button class="buttons" id="button" type="button" onclick="addFilterList()">Search now!</button>
         </a>
     </div>
     <script>
-       $(document).ready(function() {
-        $("button").click(function(){
-            var favorite = [];
-            $.each($("input[name='selection']:checked"), function(){            
-                favorite.push($(this).val());
-            });
-            alert("Applied filters: " + favorite.join(", "));
-        });
-    });
+        var favorite = [];
+        var poolCheck = document.getElementById("pool");
+        var femaleOnlyCheck = document.getElementById("Female-Only");
+        var freeParkingCheck = document.getElementById("Free_parking");
+        var hoursCheck = document.getElementById("24/7");
+        var trainersCheck = document.getElementById("Trainers");
+        var multipleLocationCheck = document.getElementById("Multiple_locations");
+
+        function addFilterList(){
+            localStorage.setItem("filterList",JSON.stringify(favorite));
+        }
+
+        function checkPool() {
+            if (poolCheck.checked && !favorite.includes('Pool')) {
+                favorite.push(poolCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == poolCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkFemaleOnly() {
+            if (femaleOnlyCheck.checked && !favorite.includes('Female-Only')) {
+                favorite.push(femaleOnlyCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == femaleOnlyCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkFreeParking() {
+            if (freeParkingCheck.checked && !favorite.includes('Free parking')) {
+                favorite.push(freeParkingCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == freeParkingCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkHours() {
+            if (hoursCheck.checked && !favorite.includes('24/7')) {
+                favorite.push(hoursCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == hoursCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkTrainers() {
+            if (trainersCheck.checked && !favorite.includes('Trainers')) {
+                favorite.push(trainersCheck.value);
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == trainersCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
+        function checkMultipleLocations() {
+            if (multipleLocationCheck.checked && !favorite.includes('Multiple locations')) {
+                favorite.push(multipleLocationCheck.value);;
+            }else{
+                for(let i = 0; i<favorite.length; i++){
+                    if(favorite[i] == multipleLocationCheck.value){
+                        favorite.splice(i,1);
+                    }
+                }
+            }
+        }
     </script>
 
     <!----------------------------------------------->
@@ -191,13 +225,12 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
         </script>
 
-    
+
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <script src="scripts/script.js"></script>
     </script>
 </body>
 

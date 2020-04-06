@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>GymFinder</title>
+    <title>Login</title>
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
+
 
     <!----------------------------------------------->
     <!--  Meta tag for rendering on mobile devices -->
@@ -15,6 +16,7 @@
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
+
     <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -26,15 +28,17 @@
     <!------------------------>
     <link rel="stylesheet" href="style/index.css">
 </head>
-
 <body>
+
+
     <!------------------->
     <!--  HTML Section -->
     <!------------------->
 
+
     <!--Navigation Bar-->
     <nav class="navbar navbar-dark bg-dark py-3">
-        <a class="navbar-brand" href="index.html">
+        <a id="index_link" class="navbar-brand" href="index.html">
             <h1>GymFinder</h1>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
@@ -44,27 +48,23 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login/Signup</a>
+                    <a id="profile" class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a id="logout" class="nav-link" href=""></a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!--FIND A GYM BUTTON-->
-    <div>
-        <a id="findGymButton" href="results.html">
-            <img id="findGymImg" class="findgym" type="image" src="images/find-a-gym.png">
-        </a>
-         <!-- Postal code btn -->
-         <form style="text-align: center;" id="addPostalCode">
-            <label>Postal Code:</label>
-            <input type="text" id="pCode" name="postalCode">
-            <input type="submit" value="Submit" onclick="submitPostalCode()">
-        </form>
-        </div>
-       
+    <!-- Authentication status -->
+    <div id="sign-in-status"></div>
+    <button id="sign-in" onclick="signUserOut()"></button>
+    <pre id="account-details"></pre>
 
-
+    <!--SIGN IN WIDGET-->
+    <div id="firebaseui-auth-container"></div>
+    <!-- <div id="loader">Loading...</div> -->
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->
@@ -93,7 +93,8 @@
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
-    <script src="scripts/index.js"></script>
+    <script src="scripts/login.js"></script>
+
 </body>
 
 </html>
