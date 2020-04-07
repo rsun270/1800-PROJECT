@@ -29,6 +29,7 @@ let gymList = [];
 
 /** Sorts list by distance (closest to farthest) */
 function sortByDistance(distance) {
+  localStorage.setItem("filterList", "");
   document.getElementById("cards").innerHTML = '';
   removeFilters();
   // distances contains an array with an object for each gym containing a gym_id: value and distance: value
@@ -53,6 +54,7 @@ function sortByDistance(distance) {
 
 /** Sorts list by price (lowest to highest) */
 function sortByPrice() {
+  localStorage.setItem("filterList", "");
   document.getElementById("cards").innerHTML = '';
   removeFilters();
   dbRef.orderBy("price")
@@ -63,15 +65,14 @@ function sortByPrice() {
 
 }
 
-//remove filters
+// Removes filters
 function removeFilters(){
   if(localStorage.getItem("filterList")==""){
-    localStorage.setItem("filterList", "");
-    document.getElementById("filters_applied").innerHTML = "No filters being applied";
+    document.getElementById("filters_applied").innerHTML = "No filters applied";
   }else{
     localStorage.setItem("filterList", "");
-    document.getElementById("filters_applied").innerHTML = "No filters being applied";
-    sortByPrice();
+    document.getElementById("filters_applied").innerHTML = "No filters applied";
+    sortByDistance();
   }
 
 }
