@@ -28,6 +28,8 @@ initApp = function () {
             if (localStorage.getItem("postalCodeLocal") == undefined) {
                 disableFindButton();
                 alert("Set a postal code.");
+            } else {
+                enableFindButton();
             }
             loggedIn = false;
 

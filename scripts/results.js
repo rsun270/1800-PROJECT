@@ -343,6 +343,7 @@ function prepDistancesArray() {
         })
     } else {
       // No user is signed in.
+      document.getElementById("index_link").onclick = homeClick;
       userPostalCode = localStorage.getItem("postalCodeLocal");
       getDistances(function (userLatLong, gymLatLong, doc) {
         let d = calcDistance(userLatLong[0], userLatLong[1], gymLatLong[0], gymLatLong[1]);
