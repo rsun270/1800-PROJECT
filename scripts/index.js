@@ -61,6 +61,7 @@ function submitPostalCode() {
     } else {
         localStorage.setItem("postalCodeLocal", currentPostalCode);
         enableFindButton();
+        alert("Your postal code, " + currentPostalCode + ", has been applied.");
         console.log(localStorage.getItem("postalCodeLocal"));
     }
 }
