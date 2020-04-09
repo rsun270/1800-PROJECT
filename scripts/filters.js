@@ -13,10 +13,12 @@ var multipleLocationCheck = document.getElementById("Multiple_locations");
 // Functions            //
 //======================//
 
+/** Saves selected filters to local storeage. */
 function addFilterList() {
     localStorage.setItem("filterList", JSON.stringify(favorite));
 }
 
+/** Checks if hasPool filter has been selected */
 function checkPool() {
     if (poolCheck.checked && !favorite.includes('Pool')) {
         favorite.push(poolCheck.value);
@@ -29,6 +31,7 @@ function checkPool() {
     }
 }
 
+/** Checks if female-only filter has been selected */
 function checkFemaleOnly() {
     if (femaleOnlyCheck.checked && !favorite.includes('Female-Only')) {
         favorite.push(femaleOnlyCheck.value);
@@ -41,6 +44,7 @@ function checkFemaleOnly() {
     }
 }
 
+/** Checks if free-parking filter has been selected */
 function checkFreeParking() {
     if (freeParkingCheck.checked && !favorite.includes('Free parking')) {
         favorite.push(freeParkingCheck.value);
@@ -53,6 +57,7 @@ function checkFreeParking() {
     }
 }
 
+/** Checks if 24-hours filter has been selected */
 function checkHours() {
     if (hoursCheck.checked && !favorite.includes('24/7')) {
         favorite.push(hoursCheck.value);
@@ -65,6 +70,7 @@ function checkHours() {
     }
 }
 
+/** Checks if hasTrainers filter has been selected */
 function checkTrainers() {
     if (trainersCheck.checked && !favorite.includes('Trainers')) {
         favorite.push(trainersCheck.value);
@@ -77,6 +83,7 @@ function checkTrainers() {
     }
 }
 
+/** Checks if multiple-locations filter has been selected */
 function checkMultipleLocations() {
     if (multipleLocationCheck.checked && !favorite.includes('Multiple locations')) {
         favorite.push(multipleLocationCheck.value);;
