@@ -115,7 +115,7 @@ function displayCards(CardObjects) { //takes in collection
   }
 
 }
- 
+
 /**
  * Creates a gym card.
  * 

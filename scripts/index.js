@@ -1,7 +1,13 @@
 //======================//
+// Constants            //
+//======================//
+
+const form = document.querySelector('#addPostalCode');
+
+//======================//
 // Global Variables     //
 //======================//
-const form = document.querySelector('#addPostalCode');
+
 let loggedIn = false;
 let userRef;
 
