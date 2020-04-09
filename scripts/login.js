@@ -1,4 +1,4 @@
-// FirebaseUI config.
+// FirebaseUI config
 var uiConfig = {
     callbacks: {
         signInSuccessWithAuthResult: function (authResult, redirectUrl) {
@@ -15,45 +15,39 @@ var uiConfig = {
                         email: user.email
                     }).then(function () {
                         console.log("New user added to firestore");
-                        // window.location.assign("main.html");
                     })
                     .catch(function (error) {
                         console.log("Error adding new user: " + error);
                     });
-            } else {
-                return true;
-            }
-            return false;
+            } else {}
+            return true;
         },
-        uiShown: function() {
-            // The widget is rendered.
-            // Hide the loader.
-            // document.getElementById('loader').style.display = 'none';
-          }
-        },
-        signInSuccessUrl: 'main.html',
-        credentialHelper: 'none',
-        signInOptions: [
-            // Leave the lines as is for the providers you want to offer your users.
-            firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        ],
-        // tosUrl and privacyPolicyUrl accept either url string or a callback
-        // function.
-        // Terms of service url/callback.
-        tosUrl: '<your-tos-url>',
-        // Privacy policy url/callback.
-        privacyPolicyUrl: function () {
-            window.location.assign('<your-privacy-policy-url>');
+        uiShown: function () {
+            // UI is now displaying
         }
-    };
+    },
+    signInSuccessUrl: 'main.html',
+    credentialHelper: 'none', // disables the credential helper page that lists all accounts saved in history
+    signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    ],
+    // tosUrl and privacyPolicyUrl accept either url string or a callback
+    // function.
+    // Terms of service url/callback.
+    tosUrl: '<your-tos-url>',
+    // Privacy policy url/callback.
+    privacyPolicyUrl: function () {
+        window.location.assign('<your-privacy-policy-url>');
+    }
+};
 
-/** <a id="profile" class="nav-link" href="login.html">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a id="logout" class="nav-link" href=""></a> */
+//======================//
+// Functions            //
+//======================//
 
-
-function updateNavBar(){
+// Updates the nav bar to reflect correct options for a signed in user
+function updateNavBar() {
     let profile = document.getElementById("profile");
     profile.innerHTML = "Profile";
     profile.href = "profile.html";
@@ -65,46 +59,36 @@ function updateNavBar(){
     document.getElementById("index_link").href = "main.html";
 }
 
-
+// Signs the user out
 function signUserOut() {
-    firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(function () {
         // Sign-out successful.
         localStorage.removeItem("postalCodeLocal");
-      }).catch(function(error) {
+        document.location
+    }).catch(function (error) {
         // An error happened.
-      });
-      location.reload();
+    });
+    location.reload();
 }
 
-let ui;
+// Alters sign in status visually when window is loaded
 initApp = function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.       
-            
             updateNavBar();
-            
             document.getElementById('sign-in').style.visibility = "visible";
             let displayName = user.displayName;
             let email = user.email;
             user.getIdToken().then(function (accessToken) {
                 document.getElementById('sign-in-status').textContent = 'Signed in as ' + displayName;
                 document.getElementById('sign-in').innerHTML = 'Sign out';
-                // document.getElementById('account-details').textContent = JSON.stringify({
-                //     displayName: displayName,
-                //     email: email,
-                //     // accessToken: accessToken,
-                // }, null, '  ');
             });
         } else {
             document.getElementById('sign-in-status').textContent = 'Signed out';
-            // User is signed out.
-            if (ui) {
-                ui.reset();
-            } else {
-                // Initialize the FirebaseUI Widget using Firebase.
-                ui = new firebaseui.auth.AuthUI(firebase.auth());
-            }
+            // Initialize the FirebaseUI Widget using Firebase.
+            let ui = new firebaseui.auth.AuthUI(firebase.auth());
+
             // The start method will wait until the DOM is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
             document.getElementById('sign-in').style.visibility = "hidden";
@@ -114,6 +98,7 @@ initApp = function () {
     });
 };
 
+// Triggers when the window is loaded
 window.addEventListener('load', function () {
     initApp();
 });

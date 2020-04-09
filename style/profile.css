@@ -22,7 +22,6 @@ a {
     line-height: 0
 }
 
-
 .col-4 {
     text-align: center;
 }
@@ -74,10 +73,6 @@ h3 {
     display: inline-block;
     
 }
-/* 
-.settings_item_content {
-    
-} */
 
 .settings_change_button {
     float: right;

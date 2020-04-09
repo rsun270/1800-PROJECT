@@ -1,7 +1,6 @@
 //======================//
 // Global Variables     //
 //======================//
-
 var favorite = [];
 var poolCheck = document.getElementById("pool");
 var femaleOnlyCheck = document.getElementById("Female-Only");
@@ -14,12 +13,10 @@ var multipleLocationCheck = document.getElementById("Multiple_locations");
 // Functions            //
 //======================//
 
-/** Adds selected filters into local storage. */
 function addFilterList() {
     localStorage.setItem("filterList", JSON.stringify(favorite));
 }
 
-/** Check if pool filter has been selected. */
 function checkPool() {
     if (poolCheck.checked && !favorite.includes('Pool')) {
         favorite.push(poolCheck.value);
@@ -32,7 +29,6 @@ function checkPool() {
     }
 }
 
-/** Check if female gym filter has been selected. */
 function checkFemaleOnly() {
     if (femaleOnlyCheck.checked && !favorite.includes('Female-Only')) {
         favorite.push(femaleOnlyCheck.value);
@@ -45,7 +41,6 @@ function checkFemaleOnly() {
     }
 }
 
-/** Check if free parking filter has been selected. */
 function checkFreeParking() {
     if (freeParkingCheck.checked && !favorite.includes('Free parking')) {
         favorite.push(freeParkingCheck.value);
@@ -58,7 +53,6 @@ function checkFreeParking() {
     }
 }
 
-/** check if 24hours filters has been selected. */
 function checkHours() {
     if (hoursCheck.checked && !favorite.includes('24/7')) {
         favorite.push(hoursCheck.value);
@@ -71,7 +65,6 @@ function checkHours() {
     }
 }
 
-/** check if trainers filter has been selected. */
 function checkTrainers() {
     if (trainersCheck.checked && !favorite.includes('Trainers')) {
         favorite.push(trainersCheck.value);
@@ -84,7 +77,6 @@ function checkTrainers() {
     }
 }
 
-/** check if multiple locations filter has been selected */
 function checkMultipleLocations() {
     if (multipleLocationCheck.checked && !favorite.includes('Multiple locations')) {
         favorite.push(multipleLocationCheck.value);;

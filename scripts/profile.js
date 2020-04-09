@@ -1,3 +1,8 @@
+//======================//
+// Functions            //
+//======================//
+
+// Displays profile if signed in, tells user to sign in if signed out
 initApp = function () {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -25,42 +30,39 @@ initApp = function () {
   });
 }
 
+// Triggers when the window loads
 window.addEventListener('load', function () {
   initApp();
 });
 
-/** updates navBar's buttons if user is signed in */
+// Updates navBar's buttons
 function updateNavBar() {
   document.getElementById("index_link").href = "main.html";
 }
 
-/** updates user postal code to database */
-function setPostalCode(code) {
-  firebase.auth().onAuthStateChanged(function (user) {
-    db.collection("users").doc(user.uid).update({
-      "postal code": code
-    });
-  })
-}
-
-/** when Change button is clicked, the user's postal code is updated to what was entered in the textfield */
+// When Change button is clicked, the user's postal code is updated to what was entered in the textfield
 function setPostalCode() {
   let code = document.getElementById("code").value; // get postal code from DOM
-
   let user = firebase.auth().currentUser;
-
   db.collection("users").doc(user.uid).update({
     "postal code": code
   });
   alert("Your postal code has been updated.")
 }
 
-/** MAIN */
+/**
+ * Listens for changes in user doc and updates postal code when triggered
+ * 
+ * @param user the logged in user
+ */
+function getPostalCode(user) {
+  db.collection("users").doc(user.uid).onSnapshot(function (userDoc) {
+    postalCode.innerHTML = userDoc.data()["postal code"];
+  });
+}
+
+//======================//
+// Main                 //
+//======================//
 let postalCode = document.getElementById("postalcode");
 
-// Listens for changes in user doc and updates postal code when triggered
-function getPostalCode(user) {
-  db.collection("users").doc(user.uid).onSnapshot(function(userDoc) {
-    postalCode.innerHTML = userDoc.data()["postal code"];
-});
-}
