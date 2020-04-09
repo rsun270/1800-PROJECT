@@ -282,6 +282,7 @@ function getDistances(pushToDistances) {
  * @param {number} long1 
  * @param {number} lat2 
  * @param {number} long2 
+ * @returns distance in km
  */
 function calcDistance(lat1, long1, lat2, long2) {
   let earthR = 6371; // Earth radius in km
@@ -298,7 +299,8 @@ function calcDistance(lat1, long1, lat2, long2) {
 /**
  * Converts degrees to radians.
  * 
- * @param {num} deg 
+ * @param {number} deg 
+ * @returns radians
  */
 function degToRad(deg) {
   return deg * Math.PI / 180;
@@ -341,7 +343,7 @@ function prepDistancesArray() {
 /**
  * Loads gym.html, showing the gym info corresponding to the one that was clicked.
  * 
- * @param {*} c document id of the gym that was clicked
+ * @param c document id of the gym that was clicked
  */
 function loadPage(c) {
   localStorage.setItem("Loaded Gym", c);
