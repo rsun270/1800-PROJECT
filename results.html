@@ -73,14 +73,20 @@
                 <li id="filters_applied_parent" class="nav-item card">
                     <h6 id="filters_applied"></p>
                 </li>
+                <li class="nav-item">
+                    <a onclick="">
+                        <input type="button" class="nav-link filter_bar_items" id="filterRemove" onclick="removeFilters()" value="Remove Filters">
+                    </a>
+                </li>
             </ul>
 
     <!--RESULTS LIST-->
-    <div class="jumbotron">
-        <div id = "cards" class="row padding">
+    <div class="jumbotron" id="results">
+        <div id = "cards" class="row">
             <!--- this is where new cards will be inserted-->
         </div>
     </div>
+
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->

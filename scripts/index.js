@@ -28,6 +28,8 @@ initApp = function () {
             if (localStorage.getItem("postalCodeLocal") == undefined) {
                 disableFindButton();
                 alert("Set a postal code.");
+            } else {
+                enableFindButton();
             }
             loggedIn = false;
 
@@ -59,6 +61,7 @@ function submitPostalCode() {
     } else {
         localStorage.setItem("postalCodeLocal", currentPostalCode);
         enableFindButton();
+        alert("Your postal code, " + currentPostalCode + ", has been applied.");
         console.log(localStorage.getItem("postalCodeLocal"));
     }
 }

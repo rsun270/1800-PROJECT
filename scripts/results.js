@@ -31,6 +31,7 @@ let gymList = [];
 function sortByDistance(distance) {
   localStorage.setItem("filterList", "");
   document.getElementById("cards").innerHTML = '';
+  removeFilters();
   // distances contains an array with an object for each gym containing a gym_id: value and distance: value
     dbRef.get().then(function (snap) {
       // Display a card for each document in the array
@@ -55,11 +56,24 @@ function sortByDistance(distance) {
 function sortByPrice() {
   localStorage.setItem("filterList", "");
   document.getElementById("cards").innerHTML = '';
+  removeFilters();
   dbRef.orderBy("price")
     .get()
     .then(function (snap) {
       displayCards(snap);
     });
+}
+
+// Removes filters
+function removeFilters(){
+  if(localStorage.getItem("filterList")==""){
+    document.getElementById("filters_applied").innerHTML = "No filters applied";
+  }else{
+    localStorage.setItem("filterList", "");
+    document.getElementById("filters_applied").innerHTML = "No filters applied";
+    sortByDistance();
+  }
+
 }
 
 // Applys filters and displays results
@@ -163,6 +177,12 @@ function createOneCard(c) {
   var text = document.createTextNode("Occupancy: " + c.data().occupancy);
   occupancy.appendChild(text);
 
+  // the Amenities
+  var gymAttribute = document.createElement("p");
+  gymAttribute.setAttribute("class", "card-text");
+  var text = document.createTextNode("Amenities: " + c.data().Filters);
+  gymAttribute.appendChild(text);
+
   // VIEW GYM button
   var a = document.createElement("input");
   a.type = "button"
@@ -180,6 +200,7 @@ function createOneCard(c) {
   cardbodydiv.appendChild(address);
   cardbodydiv.appendChild(price);
   cardbodydiv.appendChild(occupancy);
+  cardbodydiv.appendChild(gymAttribute);
   cardbodydiv.appendChild(a);
   carddiv.appendChild(cardbodydiv);
   coldiv.appendChild(carddiv);
@@ -322,6 +343,7 @@ function prepDistancesArray() {
         })
     } else {
       // No user is signed in.
+      document.getElementById("index_link").onclick = homeClick;
       userPostalCode = localStorage.getItem("postalCodeLocal");
       getDistances(function (userLatLong, gymLatLong, doc) {
         let d = calcDistance(userLatLong[0], userLatLong[1], gymLatLong[0], gymLatLong[1]);
