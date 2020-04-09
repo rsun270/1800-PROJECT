@@ -351,7 +351,7 @@ function loadPage(c) {
   //console.log(localStorage.getItem("Loaded Gym"));
 }
 
-// Updates the NavBar based on whether user is logged in or not
+// Updates the nav bar to reflect correct options for a signed in user
 function updateNavBar() {
   let profile = document.getElementById("profile");
   profile.innerHTML = "Profile";

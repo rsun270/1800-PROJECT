@@ -18,6 +18,9 @@ initApp = function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
+            if (!(window.location.href).includes("main.html")){
+                window.location.replace("main.html");
+            }
             console.log("I am logged in!");
             userRef = db.collection("users").doc(user.uid);
             userRef.get().then(function (userDoc) {
@@ -33,6 +36,9 @@ initApp = function () {
             console.log(firebase.auth().currentUser);
         } else {
             // No user is signed in.
+            if (!(window.location.href).includes("index.html")) {
+                window.location.replace("index.html");
+            }
             console.log("I am not logged in!");
             if (localStorage.getItem("postalCodeLocal") == undefined) {
                 disableFindButton();

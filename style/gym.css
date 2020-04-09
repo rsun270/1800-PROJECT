@@ -66,3 +66,7 @@ h3 {
 .filter_bar_items:hover {
     color: black;
 }
+
+#index_link {
+    cursor: pointer;
+}
