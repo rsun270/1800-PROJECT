@@ -1,5 +1,3 @@
-
-
 //======================//
 // Global variables     //
 //======================//
@@ -11,25 +9,31 @@ var docRef = db.collection("gyms").doc(gymID);
 // Functions            //
 //======================//
 
-/** Grabs gym based off of gymName that was passed to this page */
-function grabGymById(id) {
-    docRef.get().then(function(doc) {
-        if (doc.exists) {
-            createOneCard(doc);
-            generateMap(doc);
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
-    
-    
+/**
+ * Grabs gym based off of gymID that was passed to this page and displays a map
+ * and a card for the gym.
+ */
+function grabGymById() {
+  docRef.get().then(function (doc) {
+    if (doc.exists) {
+      createOneCard(doc);
+      generateMap(doc);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch(function (error) {
+    console.log("Error getting document:", error);
+  });
+
+
 }
 
-
-// Creates a gym card 
+/**
+ * Creates a gym card and displays it.
+ * 
+ * @param {document} c the gym's document
+ */
 function createOneCard(c) {
   var coldiv = document.createElement("div");
   coldiv.setAttribute("class", "col-md-3");
@@ -40,25 +44,25 @@ function createOneCard(c) {
   var cardbodydiv = document.createElement("div");
   cardbodydiv.setAttribute("class", "card-body");
 
-  // gym name
+  // Gym name
   var name = document.createElement("h4");
   name.setAttribute("class", "card-title");
   var text = document.createTextNode(c.data().name);
   name.appendChild(text);
 
-  // the distance
+  // The distance
   var distance = document.createElement("p");
   distance.setAttribute("class", "card-text");
-  var text = document.createTextNode("Distance");  // TODO
+  var text = document.createTextNode("Distance");
   distance.appendChild(text);
 
-  // the address
+  // The address
   var address = document.createElement("p");
   address.setAttribute("class", "card-text");
   var text = document.createTextNode(c.data().address);
   address.appendChild(text);
 
-  // the drop-in price
+  // The drop-in price
   var price = document.createElement("p");
   price.setAttribute("class", "card-text");
   if (!isNaN(c.data().price)) {
@@ -69,7 +73,7 @@ function createOneCard(c) {
     price.appendChild(text);
   }
 
-  // the occupancy
+  // The occupancy
   var occupancy = document.createElement("p");
   occupancy.setAttribute("class", "card-text");
   var text = document.createTextNode("Occupancy: " + c.data().occupancy);
@@ -77,7 +81,7 @@ function createOneCard(c) {
 
   var map = document.createElement("div");
 
-  // stitch it all together 
+  // Stitch it all together 
   cardbodydiv.appendChild(name);
   //cardbodydiv.appendChild(distance);
   cardbodydiv.appendChild(address);
@@ -89,13 +93,16 @@ function createOneCard(c) {
   document.getElementById("card").appendChild(coldiv); //stick it in the div
 }
 
-// generates google map 
+/**
+ * Generates and displays a Google map with the gym's location on it.
+ * 
+ * @param c the gym's document
+ */
 function generateMap(c) {
-    document.getElementById("gmap_canvas").src = c.data().map;
+  document.getElementById("gmap_canvas").src = c.data().map;
 }
 
 //======================//
 // Main                 //
 //======================//
 grabGymById(gymID);
-

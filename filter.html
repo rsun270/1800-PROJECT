@@ -81,8 +81,6 @@
                 Profile
             </div>
         </a>
-
-
     </div>
 
     <br><br>
@@ -90,54 +88,58 @@
     <div class="centeredButtons">
         <div class="btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
-                <input onclick="checkPool()" id="pool" type="checkbox" autocomplete="off" name='selection' value="Pool"> Pool
+                <input onclick="checkPool()" id="pool" type="checkbox" autocomplete="off" name='selection' value="Pool">
+                Pool
             </label>
             <label class="btn btn-secondary active">
-                <input onclick="checkFemaleOnly()"id="Female-Only" type="checkbox" autocomplete="off" name='selection' value="Female-Only">
+                <input onclick="checkFemaleOnly()" id="Female-Only" type="checkbox" autocomplete="off" name='selection'
+                    value="Female-Only">
                 Female-Only
             </label>
             <label class="btn btn-secondary active">
-                <input onclick="checkFreeParking()"id="Free_parking" type="checkbox" autocomplete="off" name='selection' value="Free parking"> Free
+                <input onclick="checkFreeParking()" id="Free_parking" type="checkbox" autocomplete="off"
+                    name='selection' value="Free parking"> Free
                 parking
             </label><br><br>
             <label class="btn btn-secondary active">
-                <input onclick="checkHours()"id="24/7" type="checkbox" autocomplete="off" name='selection' value="24/7"> 24/7
+                <input onclick="checkHours()" id="24/7" type="checkbox" autocomplete="off" name='selection'
+                    value="24/7"> 24/7
             </label>
             <label class="btn btn-secondary active">
-                <input onclick="checkTrainers()"id="Trainers" type="checkbox" autocomplete="off" name='selection' value="Trainers"> Trainers
+                <input onclick="checkTrainers()" id="Trainers" type="checkbox" autocomplete="off" name='selection'
+                    value="Trainers"> Trainers
             </label>
             <label class="btn btn-secondary active">
-                <input onclick="checkMultipleLocations()"id="Multiple_locations" type="checkbox" autocomplete="off" name='selection'
-                    value="Multiple locations"> Multiple locations
+                <input onclick="checkMultipleLocations()" id="Multiple_locations" type="checkbox" autocomplete="off"
+                    name='selection' value="Multiple locations"> Multiple locations
             </label>
         </div>
     </div><br>
     <div class="centeredButtons">
         <a href="results.html">
-            <button type="button" id="button" class="btn btn-primary btn-lg" onclick="addFilterList()">Search Now!</button>
+            <button type="button" id="button" class="btn btn-primary btn-lg" onclick="addFilterList()">Search
+                Now!</button>
         </a>
     </div>
-    <script src="scripts/filters.js"></script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->
     <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
-
-
+    </script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
+    <script src="scripts/filters.js"></script>
     </script>
 </body>
 
