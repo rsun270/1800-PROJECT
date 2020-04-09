@@ -62,8 +62,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <p class="settings_heading">Postal Code</p>
-                <input type="button" class="btn btn-primary settings_change_button" data-toggle="modal" data-target="#postalCodeModal"
-                value="Change">
+                <input type="button" class="btn btn-primary settings_change_button" data-toggle="modal"
+                    data-target="#postalCodeModal" value="Change">
                 <p id="postalcode" class="settings_item_content">
                 </p>
             </li>
@@ -80,28 +80,31 @@
         </ul>
     </div>
 
-      <!-- Postal Code Modal -->
+    <!-- Postal Code Modal -->
     <div class="modal" id="postalCodeModal">
         <div class="modal-dialog">
-        <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Change Postal Code</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-                <input type="text" id="code" placeholder="Postal code">        
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="setPostalCode()">Submit</button>
-        </div>
+            <div class="modal-content">
 
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Change Postal Code</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <input type="text" id="code" placeholder="Postal code">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        onclick="setPostalCode()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->

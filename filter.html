@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <!------------------------>
@@ -54,6 +58,8 @@
         </div>
     </nav>
 
+<<<<<<< HEAD
+=======
     <!--SHORTCUT BAR/FOOTER-->
     <div class="footer fixed-bottom center"
         style="position:fixed; left:0; bottom:0; background-color:rgb(41, 41, 41); color:white; text-align: center;">
@@ -77,156 +83,66 @@
                 Profile
             </div>
         </a>
-
-
+>>>>>>> 29c4881452f5a6857131499b8a03f4e21fbe5d66
     </div>
 
-    <a href="results.html">
-        <img src="images/back.jpg" alt="Return to previous page" id="back" width="100px" height="100px"
-            style="float:left"><br><br>
-    </a>
-    <h1 if="filterList">Filters:</h1>
-    <div class="centeredButtons">
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2" autocomplete="off" name='selection'> Price
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3" autocomplete="off" name='selection'> Distance
-            </label>
-        </div>
-    </div><br><br>
+    <br><br>
     <h1>Amenities:</h1>
     <div class="centeredButtons">
         <div class="btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-secondary active">
-                <input onclick="checkPool()" id="pool" type="checkbox" autocomplete="off" name='selection' value="Pool"> Pool
+                <input onclick="checkPool()" id="pool" type="checkbox" autocomplete="off" name='selection' value="Pool">
+                Pool
             </label>
             <label class="btn btn-secondary active">
-                <input onclick="checkFemaleOnly()"id="Female-Only" type="checkbox" autocomplete="off" name='selection' value="Female-Only">
+                <input onclick="checkFemaleOnly()" id="Female-Only" type="checkbox" autocomplete="off" name='selection'
+                    value="Female-Only">
                 Female-Only
             </label>
             <label class="btn btn-secondary active">
-                <input onclick="checkFreeParking()"id="Free_parking" type="checkbox" autocomplete="off" name='selection' value="Free parking"> Free
+                <input onclick="checkFreeParking()" id="Free_parking" type="checkbox" autocomplete="off"
+                    name='selection' value="Free parking"> Free
                 parking
             </label><br><br>
             <label class="btn btn-secondary active">
-                <input onclick="checkHours()"id="24/7" type="checkbox" autocomplete="off" name='selection' value="24/7"> 24/7
+                <input onclick="checkHours()" id="24/7" type="checkbox" autocomplete="off" name='selection'
+                    value="24/7"> 24/7
             </label>
             <label class="btn btn-secondary active">
-                <input onclick="checkTrainers()"id="Trainers" type="checkbox" autocomplete="off" name='selection' value="Trainers"> Trainers
+                <input onclick="checkTrainers()" id="Trainers" type="checkbox" autocomplete="off" name='selection'
+                    value="Trainers"> Trainers
             </label>
             <label class="btn btn-secondary active">
-                <input onclick="checkMultipleLocations()"id="Multiple_locations" type="checkbox" autocomplete="off" name='selection'
-                    value="Multiple locations"> Multiple locations
+                <input onclick="checkMultipleLocations()" id="Multiple_locations" type="checkbox" autocomplete="off"
+                    name='selection' value="Multiple locations"> Multiple locations
             </label>
         </div>
     </div><br>
     <div class="centeredButtons">
         <a href="results.html">
-            <button class="buttons" id="button" type="button" onclick="addFilterList()">Search now!</button>
+            <button type="button" id="button" class="btn btn-primary btn-lg" onclick="addFilterList()">Search
+                Now!</button>
         </a>
     </div>
-    <script>
-        var favorite = [];
-        var poolCheck = document.getElementById("pool");
-        var femaleOnlyCheck = document.getElementById("Female-Only");
-        var freeParkingCheck = document.getElementById("Free_parking");
-        var hoursCheck = document.getElementById("24/7");
-        var trainersCheck = document.getElementById("Trainers");
-        var multipleLocationCheck = document.getElementById("Multiple_locations");
-
-        function addFilterList(){
-            localStorage.setItem("filterList",JSON.stringify(favorite));
-        }
-
-        function checkPool() {
-            if (poolCheck.checked && !favorite.includes('Pool')) {
-                favorite.push(poolCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == poolCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkFemaleOnly() {
-            if (femaleOnlyCheck.checked && !favorite.includes('Female-Only')) {
-                favorite.push(femaleOnlyCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == femaleOnlyCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkFreeParking() {
-            if (freeParkingCheck.checked && !favorite.includes('Free parking')) {
-                favorite.push(freeParkingCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == freeParkingCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkHours() {
-            if (hoursCheck.checked && !favorite.includes('24/7')) {
-                favorite.push(hoursCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == hoursCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkTrainers() {
-            if (trainersCheck.checked && !favorite.includes('Trainers')) {
-                favorite.push(trainersCheck.value);
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == trainersCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-        function checkMultipleLocations() {
-            if (multipleLocationCheck.checked && !favorite.includes('Multiple locations')) {
-                favorite.push(multipleLocationCheck.value);;
-            }else{
-                for(let i = 0; i<favorite.length; i++){
-                    if(favorite[i] == multipleLocationCheck.value){
-                        favorite.splice(i,1);
-                    }
-                }
-            }
-        }
-    </script>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, other API's    -->
     <!----------------------------------------------->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
-
-
+    </script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
     <!----------------------------------------------->
     <!-- JS files: Your own JavaScripts go here    -->
     <!----------------------------------------------->
+    <script src="scripts/filters.js"></script>
     </script>
 </body>
 
