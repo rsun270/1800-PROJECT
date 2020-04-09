@@ -25,8 +25,6 @@ function grabGymById() {
   }).catch(function (error) {
     console.log("Error getting document:", error);
   });
-
-
 }
 
 /**
@@ -102,7 +100,32 @@ function generateMap(c) {
   document.getElementById("gmap_canvas").src = c.data().map;
 }
 
+// Updates the nav bar to reflect correct options for a signed in user
+function updateNavBar() {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      let profile = document.getElementById("profile");
+      profile.innerHTML = "Profile";
+      profile.href = "profile.html";
+    
+      let logOut = document.getElementById("logout");
+      logOut.innerHTML = "Log Out";
+      logOut.href = "login.html";
+      document.getElementById("index_link").onclick = function() {
+        document.location.href = "main.html";
+      } 
+      console.log("Read all lines.");
+    } else {
+      document.getElementById("index_link").onclick = function() {
+        document.location.href = "index.html";
+      };
+    }
+  });
+}
+
 //======================//
 // Main                 //
 //======================//
 grabGymById(gymID);
+updateNavBar();

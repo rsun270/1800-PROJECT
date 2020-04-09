@@ -7,7 +7,8 @@ initApp = function () {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       // User is signed in.
-      updateNavBar();
+      profileContent.style.visibility = "visible";
+      updateNavBarSignedIn();
       getPostalCode(user);
       let displayName = user.displayName;
       let email = user.email;
@@ -19,9 +20,9 @@ initApp = function () {
       userRef.on('value', function (snapshot) {
         document.write(snapshot.val());
       });
-      //document.getElementById("postalcode").innerHTML = "Set your postal code.";
     } else {
       // No user is signed in.
+      updateNavBarSignedOut();
       document.getElementById("settings_container").style.display = "none";
       let settingsMessage = document.createElement("h1");
       settingsMessage.innerHTML = "Please sign in before trying to adjust settings.";
@@ -35,10 +36,22 @@ window.addEventListener('load', function () {
   initApp();
 });
 
-// Updates navBar's buttons
-function updateNavBar() {
+// Makes the home button redirect to main.html
+function updateNavBarSignedIn() {
   document.getElementById("index_link").href = "main.html";
 }
+
+// Updates the nav bar to reflect correct options for a signed out user
+function updateNavBarSignedOut() {
+  let profile = document.getElementById("profile");
+  profile.parentNode.removeChild(profile);
+
+  let logOut = document.getElementById("logout");
+  logOut.innerHTML = "Login/Signup";
+  logOut.href = "login.html";
+}
+
+
 
 // When Change button is clicked, the user's postal code is updated to what was entered in the textfield
 function setPostalCode() {
@@ -64,5 +77,7 @@ function getPostalCode(user) {
 //======================//
 // Main                 //
 //======================//
+let profileContent = document.getElementById("settings_container");
 let postalCode = document.getElementById("postalcode");
+
 

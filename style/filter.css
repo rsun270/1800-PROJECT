@@ -41,3 +41,7 @@ input.findgym {
     display: inline-block;
     *display: inline;
 }
+
+#index_link {
+    cursor: pointer;
+}
