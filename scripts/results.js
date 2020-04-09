@@ -143,7 +143,7 @@ function createOneCard(c) {
   // Loops through each object in distances array
   for (let i = 0; i < distances.length; i++) {
     if (distances[i].gym_id === c.id) {
-      // Object gym_id matches db document id
+      // Object gym_id value matches db document id
       var text = document.createTextNode(distances[i].distance.toFixed(2) + " km away");
       coldiv.setAttribute("id", distances[i].distance + "");
       coldiv.setAttribute("class", "gymCard col-md-3");
@@ -276,7 +276,7 @@ function getDistances(pushToDistances) {
 }
 
 /**
- * Calculates the distance between two long/lat coordinates.
+ * Calculates the distance between two long/lat coordinates using the haversine formula.
  * 
  * @param {number} lat1 
  * @param {number} long1 
