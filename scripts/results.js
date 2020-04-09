@@ -7,7 +7,7 @@ let dbRef = db.collection("gyms");
 if(localStorage.getItem("filterList") && localStorage.getItem("filterList").length < 1){
   prepDistancesArray();
 }
-prepDistancesArray();
+// prepDistancesArray();
 if (localStorage.getItem("filterList") == undefined) {
   localStorage.setItem("filterList", []);
 }
@@ -74,7 +74,7 @@ function sortByPrice() {
 }
 
 function checkFilters() {
-  if (localStorage.getItem("filterList") && localStorage.getItem("filterList").length > 0) {
+  if (localStorage.getItem("filterList").length > 0) {
     let filterListArray = JSON.parse(localStorage.getItem("filterList"));
         dbRef.get().then(function (doc) {
         doc.forEach(function (doc1) {
@@ -105,18 +105,16 @@ function compareArray(arr1, arr2, arr2ID) {
 
 /** displays the cards */
 function displayCards(CardObjects) { //takes in collection
-  if (localStorage.getItem("filterList")) {
-    if(localStorage.getItem("filterList").length > 0){
-      CardObjects.forEach(function (doc) { //cycle thru collection
+  if(localStorage.getItem("filterList").length < 1){
+    CardObjects.forEach(function (doc) { //cycle thru collection
+      createOneCard(doc); //create card for one recipe/gym
+    })
+  }else{
+    CardObjects.forEach(function (doc) { //cycle thru collection
+      if(gymList.includes(doc.id)){
         createOneCard(doc); //create card for one recipe/gym
-      })
-    }else{
-      CardObjects.forEach(function (doc) { //cycle thru collection
-        if(gymList.includes(doc.id)){
-          createOneCard(doc); //create card for one recipe/gym
-        }
-      })
-    }
+      }
+    })
   }
 }
 
