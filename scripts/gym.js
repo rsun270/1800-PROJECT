@@ -71,11 +71,11 @@ function createOneCard(c) {
     price.appendChild(text);
   }
 
-  // The occupancy
-  var occupancy = document.createElement("p");
-  occupancy.setAttribute("class", "card-text");
-  var text = document.createTextNode("Occupancy: " + c.data().occupancy);
-  occupancy.appendChild(text);
+  // // The occupancy
+  // var occupancy = document.createElement("p");
+  // occupancy.setAttribute("class", "card-text");
+  // var text = document.createTextNode("Occupancy: " + c.data().occupancy);
+  // occupancy.appendChild(text);
 
   var map = document.createElement("div");
 
@@ -84,7 +84,7 @@ function createOneCard(c) {
   //cardbodydiv.appendChild(distance);
   cardbodydiv.appendChild(address);
   cardbodydiv.appendChild(price);
-  cardbodydiv.appendChild(occupancy);
+  // cardbodydiv.appendChild(occupancy); // not functional yet
   //cardbodydiv.appendChild(map);
   carddiv.appendChild(cardbodydiv);
   coldiv.appendChild(carddiv);
@@ -120,6 +120,8 @@ function updateNavBar() {
       document.getElementById("index_link").onclick = function() {
         document.location.href = "index.html";
       };
+      let profile = document.getElementById("profile");
+      profile.parentNode.removeChild(profile);
     }
   });
 }
