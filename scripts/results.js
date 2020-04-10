@@ -126,10 +126,10 @@ function createOneCard(c) {
   coldiv.setAttribute("class", "col-md-3");
 
   var carddiv = document.createElement("div");
-  carddiv.setAttribute("class", "card");
+  carddiv.setAttribute("class", "card h-100");
 
   var cardbodydiv = document.createElement("div");
-  cardbodydiv.setAttribute("class", "card-body");
+  cardbodydiv.setAttribute("class", "card-body d-flex flex-column");
 
   // Gym name
   var name = document.createElement("h4");
@@ -146,7 +146,7 @@ function createOneCard(c) {
       // Object gym_id value matches db document id
       var text = document.createTextNode(distances[i].distance.toFixed(2) + " km away");
       coldiv.setAttribute("id", distances[i].distance + "");
-      coldiv.setAttribute("class", "gymCard col-md-3");
+      // coldiv.setAttribute("class", "gymCard col-md-3");
       break;
     }
   }
@@ -169,11 +169,11 @@ function createOneCard(c) {
     price.appendChild(text);
   }
 
-  // The occupancy
-  var occupancy = document.createElement("p");
-  occupancy.setAttribute("class", "card-text");
-  var text = document.createTextNode("Occupancy: " + c.data().occupancy);
-  occupancy.appendChild(text);
+  // // The occupancy
+  // var occupancy = document.createElement("p");
+  // occupancy.setAttribute("class", "card-text");
+  // var text = document.createTextNode("Occupancy: " + c.data().occupancy);
+  // occupancy.appendChild(text);
 
   // The amenities
   var gymAttribute = document.createElement("p");
@@ -188,7 +188,7 @@ function createOneCard(c) {
   a.addEventListener('click', function () {
     loadPage(c.id);
   });
-  a.setAttribute("class", "btn btn-outline-secondary");
+  a.setAttribute("class", "btn btn-outline-secondary mt-auto");
   var text = document.createTextNode("View Gym");
   a.appendChild(text);
 
@@ -197,7 +197,7 @@ function createOneCard(c) {
   cardbodydiv.appendChild(distance);
   cardbodydiv.appendChild(address);
   cardbodydiv.appendChild(price);
-  cardbodydiv.appendChild(occupancy);
+  // cardbodydiv.appendChild(occupancy); not functional yet
   cardbodydiv.appendChild(gymAttribute);
   cardbodydiv.appendChild(a);
   carddiv.appendChild(cardbodydiv);
