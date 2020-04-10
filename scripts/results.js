@@ -380,4 +380,8 @@ function homeClick() {
 //======================//
 // Main                 //
 //======================//
-prepDistancesArray();
+
+// Waits for window to be loaded so Google Geocoding API is loaded first
+$(window).on('load', function() {
+  prepDistancesArray();
+});
